@@ -784,9 +784,10 @@ init();
       const r=await rpc('admin_teacher_vote_status',{p_password:adminPassword});
       if(!r?.ok){alert(r?.message||'현황을 불러오지 못했습니다.');return;}
       teacherVoteStatusRows=Array.isArray(r.teachers)?r.teachers:[];
-      $('voteStatusTotal').textContent=r.total??teacherVoteStatusRows.length;
-      $('voteStatusDone').textContent=r.completed??teacherVoteStatusRows.filter(x=>x.voted).length;
-      $('voteStatusPending').textContent=r.pending??teacherVoteStatusRows.filter(x=>!x.voted).length;
+      const doneCount=Math.min(Number(r.completed??teacherVoteStatusRows.filter(x=>x.voted).length),44);
+      $('voteStatusTotal').textContent=44;
+      $('voteStatusDone').textContent=doneCount;
+      $('voteStatusPending').textContent=Math.max(44-doneCount,0);
       renderTeacherVoteStatus();
     }catch(e){
       if($('voteStatusBody'))$('voteStatusBody').innerHTML=`<tr><td colspan="3">불러오기 실패: ${e.message}</td></tr>`;
@@ -885,13 +886,12 @@ init();
       await loadTeacherVoteStatus();
       if(typeof renderVoteUI==='function')await renderVoteUI();
       try{
-        const vr=await fetch(SUPABASE_URL+'/rest/v1/rpc/get_entrance_vote_rankings',{
+        const vr=await sbFetch('/rest/v1/rpc/get_entrance_vote_rankings',{
           method:'POST',
-          headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY,'Content-Type':'application/json'},
           body:'{}'
         });
-        if(vr.ok && typeof window.renderEntranceRankings==='function'){
-          window.renderEntranceRankings(await vr.json());
+        if(vr && typeof window.renderEntranceRankings==='function'){
+          window.renderEntranceRankings(vr);
         }
       }catch(_){}
     }catch(e){alert('투표 초기화 실패: '+e.message);}
