@@ -392,7 +392,7 @@ function applyRankScore(){let g=+adminGrade.value,s=adminSport.value,ranks=admin
 function resetScores(){if(confirm('전체 점수를 초기화할까요?')){localStorage.removeItem('sportsday_scores');renderScores()}}
 function setManualCurrent(){save('sportsday_current',currentManual.value.trim());updateCurrent()} function clearManualCurrent(){localStorage.removeItem('sportsday_current');currentManual.value='';updateCurrent()}
 function addNotice(){let t=noticeText.value.trim();if(!t)return;let a=ls('sportsday_notices',[]);a.unshift({t,at:new Date().toLocaleString('ko-KR')});save('sportsday_notices',a);noticeText.value='';renderNotices()}
-function renderNotices(){let a=ls('sportsday_notices',[]);homeNotices.innerHTML=a.length?a.map(x=>`<div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07)"><b>${x.t}</b><div class="small">${x.at}</div></div>`).join(''):'등록된 공지가 없습니다.'}
+function renderNotices(){if(window.SPORTSDAY_SHARED_STATE&&typeof window.renderSharedNotice==='function'){window.renderSharedNotice(window.SPORTSDAY_SHARED_STATE.notice||'');return;}let a=ls('sportsday_notices',[]);homeNotices.innerHTML=a.length?a.map(x=>`<div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07)"><b>${x.t}</b><div class="small">${x.at}</div></div>`).join(''):'등록된 공지가 없습니다.'}
 function savePlayers(){let raw=playersText.value.trim(),arr=[];raw.split(/\n+/).forEach(line=>{let [no,name,sp='']=line.split(',').map(x=>x.trim());if(no&&name)arr.push({no,name,sports:sp.split('|').filter(Boolean)})});save('sportsday_players',arr);save('sportsday_players_raw',raw);alert(`${arr.length}명 저장했습니다.`)}
 function findPlayer(){let no=studentNo.value.trim(),name=studentName.value.trim(),p=ls('sportsday_players',[]).find(x=>x.no===no&&x.name===name);playerResult.innerHTML=p?`<b>${p.no} ${p.name}</b><br>참가 종목: ${p.sports.join(' · ')||'등록 없음'}`:'일치하는 선수 정보가 없습니다.'}
 function saveBracket(){save('sportsday_bracket',bracketText.value.trim());renderBracket();alert('저장했습니다.')} function renderBracket(){let t=ls('sportsday_bracket','');bracketNotes.innerHTML=t?`<pre style="white-space:pre-wrap;margin:0;font-family:inherit">${escapeHtml(t)}</pre>`:'아직 등록된 대진 정보가 없습니다.'}
@@ -751,37 +751,48 @@ init();
   }
 
   window.renderSharedNotice=function(notice){
+    const text=notice||'등록된 본부 공지가 없습니다.';
+    const home=document.getElementById('homeNotices');
+    if(home){
+      home.innerHTML=notice
+        ? `<div style="padding:8px 0"><b>${String(notice).replace(/</g,'&lt;').replace(/>/g,'&gt;')}</b><div class="small">본부 실시간 공지</div></div>`
+        : text;
+    }
     const candidates=[
       document.getElementById('noticeBox'),
+      document.getElementById('homeNotice'),
+      document.getElementById('mainNotice'),
       document.querySelector('.notice-box'),
       document.querySelector('[data-notice]')
     ].filter(Boolean);
-    candidates.forEach(el=>{
-      el.textContent=notice||'등록된 본부 공지가 없습니다.';
-    });
-    const hero=document.getElementById('homeNotice')||document.getElementById('mainNotice');
-    if(hero)hero.textContent=notice||'등록된 본부 공지가 없습니다.';
+    candidates.forEach(el=>{ el.textContent=text; });
   };
 
   window.renderSharedScores=function(scores){
     const entries=Object.entries(scores||{});
-    const grouped={1:[],2:[],3:[]};
+    const rows=[];
     entries.forEach(([k,v])=>{
       const m=/^([123])-(.+)$/.exec(k);
-      if(m)grouped[m[1]].push({cls:m[2],score:Number(v)});
+      if(m) rows.push({grade:Number(m[1]), cls:m[2], score:Number(v)||0});
     });
-    Object.keys(grouped).forEach(g=>grouped[g].sort((a,b)=>b.score-a.score));
+    rows.sort((a,b)=>b.score-a.score||a.grade-b.grade||String(a.cls).localeCompare(String(b.cls),'ko'));
+
+    const body=document.getElementById('homeRankBody');
+    if(body){
+      body.innerHTML=rows.length
+        ? rows.slice(0,6).map((r,i)=>`<tr><td class="rank${i+1}">${i+1}</td><td>${r.grade}학년</td><td><b>${r.cls}반</b></td><td><b>${r.score}</b></td></tr>`).join('')
+        : '<tr><td colspan="4">점수 입력 전입니다.</td></tr>';
+    }
+
     const box=document.getElementById('liveRanking')||document.getElementById('rankingBox')||document.querySelector('[data-ranking]');
     if(box){
-      box.innerHTML=[1,2,3].map(g=>{
-        const rows=grouped[g];
-        return `<div style="margin:8px 0"><b>${g}학년</b> · ${
-          rows.length?rows.map((r,i)=>`${i+1}위 ${r.cls}반 ${r.score}점`).join(' / '):'점수 입력 전'
-        }</div>`;
-      }).join('');
+      const grouped={1:[],2:[],3:[]};
+      rows.forEach(r=>grouped[r.grade].push(r));
+      box.innerHTML=[1,2,3].map(g=>`<div style="margin:8px 0"><b>${g}학년</b> · ${
+        grouped[g].length?grouped[g].map((r,i)=>`${i+1}위 ${r.cls}반 ${r.score}점`).join(' / '):'점수 입력 전'
+      }</div>`).join('');
     }
   };
-
   async function refresh(){
     const s=await getState();
     if(!s)return;
