@@ -55,6 +55,33 @@ main{max-width:1180px;margin:0 auto;padding:28px 18px 80px}.section{display:none
 .admin-note{font-size:12px;color:var(--muted);line-height:1.5}
 @media(max-width:760px){.admin-grid{grid-template-columns:1fr}.admin-fab{right:12px;bottom:12px}}
 
+
+.vote-live-rank{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.vote-live-rank-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.vote-live-rank-title b{color:var(--wine3)}
+.vote-live-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.vote-live-grade{background:var(--soft);border-radius:12px;padding:10px}
+.vote-live-grade strong{display:block;color:var(--wine);margin-bottom:5px}
+.vote-live-grade .row{display:flex;justify-content:space-between;gap:8px;font-size:12px;padding:3px 0}
+.admin-wide{grid-column:1/-1}
+.vote-status-summary{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.vote-status-chip{padding:6px 9px;border-radius:999px;background:var(--soft);font-size:12px;font-weight:800}
+.vote-status-tools{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.vote-status-tools button.active{background:var(--wine);color:#fff}
+.vote-status-list{max-height:330px;overflow:auto;border:1px solid var(--line);border-radius:12px}
+.vote-status-list table{width:100%;border-collapse:collapse;font-size:13px}
+.vote-status-list th,.vote-status-list td{padding:9px;border-bottom:1px solid var(--line);text-align:left}
+.vote-status-list th{position:sticky;top:0;background:#fff8fa;color:var(--wine3);z-index:1}
+.vote-ok{font-weight:900;color:#15803d}.vote-pending{font-weight:900;color:#b45309}
+@media(max-width:760px){.vote-live-grid{grid-template-columns:1fr}.vote-status-list{max-height:420px}}
+
+
+.admin-score-list{margin-top:10px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.admin-score-list table{width:100%;border-collapse:collapse;font-size:13px}
+.admin-score-list th,.admin-score-list td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:left}
+.admin-score-list th{background:#fff8fa;color:var(--wine3)}
+.danger-btn{background:#fff0f0!important;color:#a31717!important;border:1px solid #efcaca!important}
+
 </style>
 
 <script>
@@ -103,7 +130,25 @@ try {
     </div>
     <div class="home-panel">
       <div class="panel-title"><span>🏆 실시간 종합 순위</span><span>전체 보기 ›</span></div>
-      <div class="panel-body"><div class="tablewrap" style="border:0"><table style="min-width:0"><thead><tr><th>순위</th><th>학년</th><th>반</th><th>점수</th></tr></thead><tbody id="homeRankBody"></tbody></table></div></div>
+      <div class="panel-body">
+        <div class="tablewrap" style="border:0">
+          <table style="min-width:0">
+            <thead><tr><th>순위</th><th>학년</th><th>반</th><th>점수</th></tr></thead>
+            <tbody id="homeRankBody"></tbody>
+          </table>
+        </div>
+        <div class="vote-live-rank">
+          <div class="vote-live-rank-title">
+            <b>🎉 입장식 실시간 순위</b>
+            <span class="small" id="entranceVoteCount">투표 0명</span>
+          </div>
+          <div class="vote-live-grid" id="entranceLiveRank">
+            <div class="vote-live-grade"><strong>1학년</strong><span class="small">투표 전</span></div>
+            <div class="vote-live-grade"><strong>2학년</strong><span class="small">투표 전</span></div>
+            <div class="vote-live-grade"><strong>3학년</strong><span class="small">투표 전</span></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div>
       <div class="home-panel">
@@ -519,7 +564,8 @@ init();
           </div>
 
           <div class="admin-card">
-            <h3>실시간 점수 입력</h3>
+            <h3>실시간 점수 관리</h3>
+            <p class="admin-note">같은 학년·반에 새 점수를 저장하면 기존 점수가 수정됩니다.</p>
             <label>학년</label>
             <select id="scoreGrade"><option>1</option><option>2</option><option>3</option></select>
             <label style="display:block;margin-top:8px">반</label>
@@ -527,7 +573,15 @@ init();
             <label style="display:block;margin-top:8px">총점</label>
             <input id="scoreValue" type="number" placeholder="예: 450">
             <div class="admin-actions">
-              <button class="admin-primary" id="scoreSaveBtn">점수 저장</button>
+              <button class="admin-primary" id="scoreSaveBtn">저장 / 수정</button>
+              <button class="admin-secondary" id="scoreListRefreshBtn" type="button">현재 점수 새로고침</button>
+              <button class="admin-secondary danger-btn" id="scoreResetBtn" type="button">점수 전체 초기화</button>
+            </div>
+            <div class="admin-score-list">
+              <table>
+                <thead><tr><th>학년</th><th>반</th><th>점수</th></tr></thead>
+                <tbody id="adminScoreListBody"><tr><td colspan="3">점수 입력 전입니다.</td></tr></tbody>
+              </table>
             </div>
           </div>
 
@@ -546,6 +600,28 @@ init();
             <div id="voteResultBox" class="admin-note">결과 불러오기 전입니다.</div>
             <div class="admin-actions">
               <button class="admin-secondary" id="voteResultLoadBtn">결과 새로고침</button>
+              <button class="admin-secondary danger-btn" id="voteResetBtn" type="button">투표 전체 초기화</button>
+            </div>
+          </div>
+
+          <div class="admin-card admin-wide">
+            <h3>교직원 투표 참여 현황</h3>
+            <div class="vote-status-summary">
+              <span class="vote-status-chip">전체 <b id="voteStatusTotal">-</b>명</span>
+              <span class="vote-status-chip">완료 <b id="voteStatusDone">-</b>명</span>
+              <span class="vote-status-chip">미완료 <b id="voteStatusPending">-</b>명</span>
+            </div>
+            <div class="vote-status-tools">
+              <button class="admin-secondary active" type="button" data-vote-filter="all">전체</button>
+              <button class="admin-secondary" type="button" data-vote-filter="done">투표 완료</button>
+              <button class="admin-secondary" type="button" data-vote-filter="pending">미투표</button>
+              <button class="admin-primary" type="button" id="voteStatusRefreshBtn">현황 새로고침</button>
+            </div>
+            <div class="vote-status-list">
+              <table>
+                <thead><tr><th>성명</th><th>상태</th><th>투표 시각</th></tr></thead>
+                <tbody id="voteStatusBody"><tr><td colspan="3">현황을 불러오는 중입니다.</td></tr></tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -587,7 +663,7 @@ init();
     loginView.style.display='block'; panelView.style.display='none'; pwInput.value=''; msg.textContent='';
   }
   function showPanel(){
-    loginView.style.display='none'; panelView.style.display='block'; testConnection(); loadVoteState(); loadVoteResults();
+    loginView.style.display='none'; panelView.style.display='block'; testConnection(); loadVoteState(); loadVoteResults(); loadTeacherVoteStatus(); loadAdminScores();
   }
   fab.onclick=open; close.onclick=shut;
   overlay.addEventListener('click',e=>{if(e.target===overlay)shut();});
@@ -682,6 +758,51 @@ init();
   }
   $('voteResultLoadBtn').onclick=loadVoteResults;
 
+  let teacherVoteStatusRows=[];
+  let teacherVoteFilter='all';
+
+  function renderTeacherVoteStatus(){
+    const body=$('voteStatusBody');
+    if(!body)return;
+    const rows=teacherVoteStatusRows.filter(r=>{
+      if(teacherVoteFilter==='done')return !!r.voted;
+      if(teacherVoteFilter==='pending')return !r.voted;
+      return true;
+    });
+    body.innerHTML=rows.length?rows.map(r=>{
+      const when=r.used_at?new Date(r.used_at).toLocaleString('ko-KR'):'-';
+      return `<tr>
+        <td><b>${String(r.teacher_name||'').replace(/</g,'&lt;')}</b></td>
+        <td class="${r.voted?'vote-ok':'vote-pending'}">${r.voted?'투표 완료':'미투표'}</td>
+        <td>${when}</td>
+      </tr>`;
+    }).join(''):'<tr><td colspan="3">해당 교직원이 없습니다.</td></tr>';
+  }
+
+  async function loadTeacherVoteStatus(){
+    try{
+      const r=await rpc('admin_teacher_vote_status',{p_password:adminPassword});
+      if(!r?.ok){alert(r?.message||'현황을 불러오지 못했습니다.');return;}
+      teacherVoteStatusRows=Array.isArray(r.teachers)?r.teachers:[];
+      $('voteStatusTotal').textContent=r.total??teacherVoteStatusRows.length;
+      $('voteStatusDone').textContent=r.completed??teacherVoteStatusRows.filter(x=>x.voted).length;
+      $('voteStatusPending').textContent=r.pending??teacherVoteStatusRows.filter(x=>!x.voted).length;
+      renderTeacherVoteStatus();
+    }catch(e){
+      if($('voteStatusBody'))$('voteStatusBody').innerHTML=`<tr><td colspan="3">불러오기 실패: ${e.message}</td></tr>`;
+    }
+  }
+
+  document.querySelectorAll('[data-vote-filter]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      teacherVoteFilter=btn.dataset.voteFilter;
+      document.querySelectorAll('[data-vote-filter]').forEach(b=>b.classList.toggle('active',b===btn));
+      renderTeacherVoteStatus();
+    });
+  });
+  if($('voteStatusRefreshBtn'))$('voteStatusRefreshBtn').onclick=loadTeacherVoteStatus;
+
+
   async function loadPublicState(){
     try{
       const rows=await sbFetch('/rest/v1/sportsday_public_state?select=*&id=eq.1');
@@ -727,6 +848,44 @@ init();
       alert(r?.message||'처리했습니다.');
       if(r?.ok) await loadPublicState();
     }catch(e){alert('점수 저장 실패: '+e.message);}
+  };
+
+  async function loadAdminScores(){
+    const body=$('adminScoreListBody');
+    if(!body)return;
+    try{
+      const r=await rpc('admin_get_scores',{p_password:adminPassword});
+      if(!r?.ok){body.innerHTML=`<tr><td colspan="3">${r?.message||'불러오기 실패'}</td></tr>`;return;}
+      const rows=Object.entries(r.scores||{}).map(([k,v])=>{
+        const m=/^([123])-(.+)$/.exec(k);
+        return m?{grade:Number(m[1]),cls:m[2],score:Number(v)}:null;
+      }).filter(Boolean).sort((a,b)=>a.grade-b.grade||String(a.cls).localeCompare(String(b.cls),'ko'));
+      body.innerHTML=rows.length?rows.map(x=>`<tr><td>${x.grade}학년</td><td>${x.cls}반</td><td><b>${x.score}</b></td></tr>`).join(''):'<tr><td colspan="3">점수 입력 전입니다.</td></tr>';
+    }catch(e){body.innerHTML=`<tr><td colspan="3">불러오기 실패: ${e.message}</td></tr>`;}
+  }
+
+  if($('scoreListRefreshBtn'))$('scoreListRefreshBtn').onclick=loadAdminScores;
+
+  if($('scoreResetBtn'))$('scoreResetBtn').onclick=async()=>{
+    if(!confirm('현재 입력된 모든 학급 점수를 0이 아니라 완전히 삭제하고 초기화할까요?'))return;
+    try{
+      const r=await rpc('admin_reset_scores',{p_password:adminPassword});
+      alert(r?.message||'처리했습니다.');
+      if(r?.ok){await loadPublicState();await loadAdminScores();}
+    }catch(e){alert('점수 초기화 실패: '+e.message);}
+  };
+
+  if($('voteResetBtn'))$('voteResetBtn').onclick=async()=>{
+    if(!confirm('테스트 입장식 투표 결과를 모두 삭제하고, 사용된 교직원 인증코드도 다시 사용할 수 있게 초기화할까요?'))return;
+    try{
+      const r=await rpc('admin_reset_votes',{p_password:adminPassword});
+      alert(r?.message||'처리했습니다.');
+      if(r?.ok){
+        await loadVoteResults();
+        await loadTeacherVoteStatus();
+        if(typeof renderVoteUI==='function')await renderVoteUI();
+      }
+    }catch(e){alert('투표 초기화 실패: '+e.message);}
   };
 
   loadPublicState();
@@ -793,12 +952,42 @@ init();
       }</div>`).join('');
     }
   };
+  async function getEntranceRankings(){
+    if(!U||!K)return null;
+    const r=await fetch(U+'/rest/v1/rpc/get_entrance_vote_rankings',{
+      method:'POST',
+      headers:{apikey:K,Authorization:'Bearer '+K,'Content-Type':'application/json'},
+      body:'{}'
+    });
+    if(!r.ok)return null;
+    return await r.json();
+  }
+
+  window.renderEntranceRankings=function(data){
+    const grid=document.getElementById('entranceLiveRank');
+    const count=document.getElementById('entranceVoteCount');
+    if(!grid)return;
+    if(count)count.textContent=`투표 ${Number(data?.total_votes||0)}명`;
+
+    const gradeBlock=g=>{
+      const rows=Array.isArray(data?.['grade'+g])?data['grade'+g]:[];
+      if(!rows.length)return `<div class="vote-live-grade"><strong>${g}학년</strong><span class="small">투표 전</span></div>`;
+      return `<div class="vote-live-grade">
+        <strong>${g}학년</strong>
+        ${rows.slice(0,3).map((r,i)=>`<div class="row"><span>${i+1}위 · ${r.class}반</span><b>${r.votes}표</b></div>`).join('')}
+      </div>`;
+    };
+    grid.innerHTML=[1,2,3].map(gradeBlock).join('');
+  };
+
   async function refresh(){
-    const s=await getState();
-    if(!s)return;
-    window.SPORTSDAY_SHARED_STATE=s;
-    window.renderSharedNotice(s.notice||'');
-    window.renderSharedScores(s.scores||{});
+    const [s,voteRanks]=await Promise.all([getState(),getEntranceRankings()]);
+    if(s){
+      window.SPORTSDAY_SHARED_STATE=s;
+      window.renderSharedNotice(s.notice||'');
+      window.renderSharedScores(s.scores||{});
+    }
+    if(voteRanks)window.renderEntranceRankings(voteRanks);
   }
   window.refreshSportsdayPublicState=refresh;
   refresh();
