@@ -82,6 +82,13 @@ main{max-width:1180px;margin:0 auto;padding:28px 18px 80px}.section{display:none
 .admin-score-list th{background:#fff8fa;color:var(--wine3)}
 .danger-btn{background:#fff0f0!important;color:#a31717!important;border:1px solid #efcaca!important}
 
+
+.bracket-wrap{display:grid;gap:18px}.bracket-grade{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+.bracket-grade-head{padding:14px 16px;background:linear-gradient(135deg,#8f1538,#b41f4c);color:#fff;display:flex;justify-content:space-between;gap:10px}
+.bracket-grade-head h3{margin:0}.bracket-sports{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:14px}
+.bracket-sport{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fffafb}.bracket-sport h4{margin:0 0 9px;color:var(--wine3)}
+.match-list{display:grid;gap:7px}.match-row{display:flex;justify-content:space-between;gap:8px;padding:8px 10px;border-radius:10px;background:#fff;border:1px solid #f0dde4}
+.match-stage{font-size:12px;font-weight:800;color:#7b5260}.match-team{font-weight:900;text-align:right}@media(max-width:760px){.bracket-sports{grid-template-columns:1fr}}
 </style>
 
 <script>
@@ -265,10 +272,9 @@ try {
   <div class="rulegrid" id="rulesGrid"></div>
 </section>
 
-<section id="bracket" class="section">
-  <div class="sectionhead"><div><h2>🧩 대진·기록</h2><p>대진표 입력 영역. 실제 추첨 결과를 입력하면 바로 운영 가능</p></div><span class="badge">관리자 입력</span></div>
-  <div class="card full"><h3>대진표 메모</h3><p>계획서 붙임 대진표에는 일부 경기 시간이 입력되어 있으나 학급 대진은 추첨 전 빈칸입니다. 아래 관리자 화면에서 대진/결과 메모를 저장할 수 있습니다.</p><div id="bracketNotes" class="result">아직 등록된 대진 정보가 없습니다.</div></div>
-</section>
+<section id="bracket" class="section"><div class="wrap">
+<div class="section-title"><div><div class="kicker">확정 대진</div><h2>종목별 대진표</h2></div><span class="badge">8.31. 추첨 결과</span></div>
+<p class="muted">본선 이후 대진은 앞 경기 승자에 따라 결정됩니다.</p><div id="officialBracket" class="bracket-wrap"></div></div></section>
 
 <section id="players" class="section">
   <div class="sectionhead"><div><h2>👟 출전선수</h2><p>선수 명단 입력 후 학번과 이름으로 참가 종목 검색</p></div></div>
@@ -440,8 +446,13 @@ function addNotice(){let t=noticeText.value.trim();if(!t)return;let a=ls('sports
 function renderNotices(){if(window.SPORTSDAY_SHARED_STATE&&typeof window.renderSharedNotice==='function'){window.renderSharedNotice(window.SPORTSDAY_SHARED_STATE.notice||'');return;}let a=ls('sportsday_notices',[]);homeNotices.innerHTML=a.length?a.map(x=>`<div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07)"><b>${x.t}</b><div class="small">${x.at}</div></div>`).join(''):'등록된 공지가 없습니다.'}
 function savePlayers(){let raw=playersText.value.trim(),arr=[];raw.split(/\n+/).forEach(line=>{let [no,name,sp='']=line.split(',').map(x=>x.trim());if(no&&name)arr.push({no,name,sports:sp.split('|').filter(Boolean)})});save('sportsday_players',arr);save('sportsday_players_raw',raw);alert(`${arr.length}명 저장했습니다.`)}
 function findPlayer(){let no=studentNo.value.trim(),name=studentName.value.trim(),p=ls('sportsday_players',[]).find(x=>x.no===no&&x.name===name);playerResult.innerHTML=p?`<b>${p.no} ${p.name}</b><br>참가 종목: ${p.sports.join(' · ')||'등록 없음'}`:'일치하는 선수 정보가 없습니다.'}
-function saveBracket(){save('sportsday_bracket',bracketText.value.trim());renderBracket();alert('저장했습니다.')} function renderBracket(){let t=ls('sportsday_bracket','');bracketNotes.innerHTML=t?`<pre style="white-space:pre-wrap;margin:0;font-family:inherit">${escapeHtml(t)}</pre>`:'아직 등록된 대진 정보가 없습니다.'}
+function saveBracket(){alert('확정 대진표가 반영되어 있습니다.')} function renderBracket(){renderOfficialBracket();}
 function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+
+const OFFICIAL_BRACKETS={"1": {"풋살": [["1경기", "1반 vs 4반"], ["2경기", "2반 vs 5반"], ["3경기", "2경기 승자 vs 3반"], ["4경기", "1경기 승자 vs 3경기 승자"]], "배드민턴": [["예선 1", "2반 vs 4반"], ["본선 1", "1반 vs 예선 1 승자"], ["본선 2", "5반 vs 3반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "판뒤집기": [["예선 1", "3반 vs 4반"], ["본선 1", "2반 vs 예선 1 승자"], ["본선 2", "5반 vs 1반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "줄다리기": [["예선 1", "3반 vs 4반"], ["본선 1", "2반 vs 예선 1 승자"], ["본선 2", "1반 vs 5반"], ["결승", "본선 1 승자 vs 본선 2 승자"]]}, "2": {"풋살": [["예선 1", "3반 vs 4반"], ["예선 2", "5반 vs 2반"], ["본선 1", "예선 1 승자 vs 6반"], ["본선 2", "예선 2 승자 vs 1반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "배드민턴": [["예선 1", "3반 vs 4반"], ["예선 2", "6반 vs 1반"], ["본선 1", "예선 1 승자 vs 2반"], ["본선 2", "예선 2 승자 vs 5반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "판뒤집기": [["예선 1", "6반 vs 4반"], ["예선 2", "3반 vs 5반"], ["본선 1", "예선 1 승자 vs 1반"], ["본선 2", "예선 2 승자 vs 2반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "줄다리기": [["예선 1", "4반 vs 6반"], ["예선 2", "1반 vs 2반"], ["본선 1", "예선 1 승자 vs 3반"], ["본선 2", "예선 2 승자 vs 5반"], ["결승", "본선 1 승자 vs 본선 2 승자"]]}, "3": {"풋살": [["예선 1", "6반 vs 3반"], ["예선 2", "5반 vs 7반"], ["예선 3", "4반 vs 1반"], ["본선 1", "예선 1 승자 vs 예선 2 승자"], ["본선 2", "예선 3 승자 vs 2반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "배드민턴": [["예선 1", "6반 vs 1반"], ["예선 2", "3반 vs 5반"], ["예선 3", "2반 vs 4반"], ["본선 1", "예선 1 승자 vs 예선 2 승자"], ["본선 2", "예선 3 승자 vs 7반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "판뒤집기": [["예선 1", "2반 vs 6반"], ["예선 2", "7반 vs 1반"], ["예선 3", "3반 vs 4반"], ["본선 1", "예선 1 승자 vs 예선 2 승자"], ["본선 2", "예선 3 승자 vs 5반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "줄다리기": [["예선 1", "7반 vs 4반"], ["예선 2", "5반 vs 3반"], ["예선 3", "6반 vs 1반"], ["본선 1", "예선 1 승자 vs 예선 2 승자"], ["본선 2", "예선 3 승자 vs 2반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "계주": [["예선 1조", "2반 · 4반 · 6반"], ["예선 2조", "1반 · 3반 · 5반 · 7반"], ["결승", "예선 통과 학급"]]}};
+function renderOfficialBracket(){const root=document.getElementById('officialBracket');if(!root)return;
+root.innerHTML=[1,2,3].map(g=>`<article class="bracket-grade"><div class="bracket-grade-head"><h3>${g}학년 대진표</h3></div><div class="bracket-sports">${Object.entries(OFFICIAL_BRACKETS[g]).map(([sport,matches])=>`<div class="bracket-sport"><h4>${sport}</h4><div class="match-list">${matches.map(([stage,team])=>`<div class="match-row"><span class="match-stage">${stage}</span><span class="match-team">${team}</span></div>`).join('')}</div></div>`).join('')}</div></article>`).join('');}
+
 async function renderVoteUI(){
  const grid=document.getElementById('voteGrid'); if(!grid)return;
  grid.innerHTML=[1,2,3].map(g=>`<div class="vote-grade"><h3>${g}학년</h3><div class="class-choices">${Array.from({length:gradeClasses[g]},(_,i)=>i+1).map(c=>`<div class="class-choice"><input type="radio" name="vote_g${g}" id="vote_g${g}_${c}" value="${c}"><label for="vote_g${g}_${c}">${c}반</label></div>`).join('')}</div></div>`).join('');
@@ -508,6 +519,7 @@ async function testCloudConfig(){const u=(localStorage.getItem('sportsday_supaba
 
 function exportData(){let data={scores:ls('sportsday_scores',{}),notices:ls('sportsday_notices',[]),players:ls('sportsday_players',[]),bracket:ls('sportsday_bracket',''),current:ls('sportsday_current',''),entranceVotes:ls('sportsday_entrance_votes',[])};let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sportsday-data.json';a.click();URL.revokeObjectURL(a.href)}
 function clearAll(){if(confirm('이 웹앱에서 저장한 모든 데이터를 삭제할까요?')){Object.keys(localStorage).filter(k=>k.startsWith('sportsday_')).forEach(k=>localStorage.removeItem(k));location.reload()}}
+renderOfficialBracket();
 init();
 </script>
 
