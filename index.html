@@ -168,6 +168,36 @@ try {
 } catch(e) {}
 </script>
 
+
+<style>
+/* v21: 학급별 참가신청서 이름 표시 개선 */
+#classApplicationResult .class-name-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px 16px;
+  align-items:center;
+  line-height:1.7;
+}
+#classApplicationResult .class-name-item{
+  display:inline-block;
+  white-space:nowrap;
+  padding:1px 0;
+  font-weight:500;
+}
+#classApplicationResult td{
+  vertical-align:top;
+}
+#classApplicationResult .small .class-name-list{
+  display:inline-flex;
+  margin-left:6px;
+}
+@media (max-width:640px){
+  #classApplicationResult .class-name-list{
+    gap:5px 12px;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="topbar">
@@ -964,7 +994,7 @@ function updateClassSheetClassOptions(){
   for(let c=1;c<=max;c++) sel.add(new Option(c+'반',String(c)));
 }
 function namesHtml(key,arr){
-  return (arr||[]).map(x=>'<span class="chip">'+escapeHtml(classDisplayName(key,x))+'</span>').join(' ');
+  return '<div class="class-name-list">'+(arr||[]).map(x=>'<span class="class-name-item">'+escapeHtml(classDisplayName(key,x))+'</span>').join('')+'</div>';
 }
 function showClassApplication(){
   const g=document.getElementById('classSheetGrade').value;
