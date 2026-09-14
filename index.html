@@ -144,6 +144,15 @@ main{max-width:1180px;margin:0 auto;padding:28px 18px 80px}.section{display:none
   .student-lookup-grid .grow{grid-column:1/-1}
 }
 
+
+/* v12 수정된 한글 대진표 */
+.hwp-bracket-wrap{display:grid;gap:22px;margin-top:14px}
+.hwp-grade-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 6px 20px rgba(71,28,43,.05)}
+.hwp-grade-title{text-align:center;font-size:22px;font-weight:900;color:var(--wine3);padding:4px 0 12px}
+.hwp-bracket-row{overflow-x:auto;padding:5px 0 10px;-webkit-overflow-scrolling:touch}
+.hwp-bracket-row svg{display:block;min-width:720px;width:100%;height:auto}
+@media(max-width:760px){.hwp-grade-card{padding:10px}.hwp-grade-title{font-size:19px}.hwp-bracket-row svg{min-width:800px}}
+
 </style>
 
 <script>
@@ -328,8 +337,331 @@ try {
 </section>
 
 <section id="bracket" class="section"><div class="wrap">
-<div class="section-title"><div><div class="kicker">확정 대진</div><h2>종목별 대진표</h2></div><span class="badge">8.31. 추첨 결과</span></div>
-<p class="muted">본선 이후 대진은 앞 경기 승자에 따라 결정됩니다.</p><div id="officialBracket" class="bracket-wrap"></div></div></section>
+  <div class="section-title">
+    <div><div class="kicker">확정 대진</div><h2>종목별 대진표</h2></div>
+    <span class="badge">1·2·3학년 토너먼트 연결형</span>
+  </div>
+  <p class="muted">1학년, 2학년, 3학년 순서로 대진표를 배치했습니다. 한글파일의 반 배치 기준 대진은 그대로 유지했습니다. 휴대폰에서는 좌우로 밀어서 확인하세요.</p>
+  <div class="hwp-bracket-wrap"><article class="hwp-grade-card"><div class="hwp-grade-title">대 진 표(1학년)</div><div class="hwp-bracket-row"><svg viewBox="0 0 1000 390" role="img" aria-label="풋살 1학년 대진표"><rect x="0" y="0" width="1000" height="390" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">풋살</text>
+        <text x="140" y="148" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">1경기</text>
+        <rect x="60" y="160" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="140" y="189" text-anchor="middle" font-size="15" font-weight="700">5반</text>
+        <line x1="78" y1="198" x2="202" y2="198" stroke="#eadde2"/>
+        <text x="140" y="224" text-anchor="middle" font-size="14" font-weight="700">2반</text>
+        <text x="475" y="58" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">2경기</text>
+        <rect x="395" y="70" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="475" y="99" text-anchor="middle" font-size="15" font-weight="700">4반</text>
+        <line x1="413" y1="108" x2="537" y2="108" stroke="#eadde2"/>
+        <text x="475" y="134" text-anchor="middle" font-size="14" font-weight="700">1반</text>
+        <text x="475" y="238" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">3경기</text>
+        <rect x="395" y="250" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="475" y="279" text-anchor="middle" font-size="15" font-weight="700">3반</text>
+        <line x1="413" y1="288" x2="537" y2="288" stroke="#eadde2"/>
+        <text x="475" y="314" text-anchor="middle" font-size="14" font-weight="700">1경기 승자</text>
+        <text x="830" y="148" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">4경기</text>
+        <rect x="750" y="160" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="830" y="189" text-anchor="middle" font-size="15" font-weight="700">2경기 승자</text>
+        <line x1="768" y1="198" x2="892" y2="198" stroke="#eadde2"/>
+        <text x="830" y="224" text-anchor="middle" font-size="14" font-weight="700">3경기 승자</text><path d="M220 198 H305 V288 H395" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M555 108 H650 V188 H750" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M555 288 H650 V224 H750" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div><div class="hwp-bracket-row"><svg viewBox="0 0 1000 390" role="img" aria-label="배드민턴 1학년 대진표"><rect x="0" y="0" width="1000" height="390" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">배드민턴</text>
+        <text x="140" y="148" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">1경기</text>
+        <rect x="60" y="160" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="140" y="189" text-anchor="middle" font-size="15" font-weight="700">3반</text>
+        <line x1="78" y1="198" x2="202" y2="198" stroke="#eadde2"/>
+        <text x="140" y="224" text-anchor="middle" font-size="14" font-weight="700">1반</text>
+        <text x="475" y="58" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">2경기</text>
+        <rect x="395" y="70" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="475" y="99" text-anchor="middle" font-size="15" font-weight="700">2반</text>
+        <line x1="413" y1="108" x2="537" y2="108" stroke="#eadde2"/>
+        <text x="475" y="134" text-anchor="middle" font-size="14" font-weight="700">4반</text>
+        <text x="475" y="238" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">3경기</text>
+        <rect x="395" y="250" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="475" y="279" text-anchor="middle" font-size="15" font-weight="700">5반</text>
+        <line x1="413" y1="288" x2="537" y2="288" stroke="#eadde2"/>
+        <text x="475" y="314" text-anchor="middle" font-size="14" font-weight="700">1경기 승자</text>
+        <text x="830" y="148" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">4경기</text>
+        <rect x="750" y="160" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="830" y="189" text-anchor="middle" font-size="15" font-weight="700">2경기 승자</text>
+        <line x1="768" y1="198" x2="892" y2="198" stroke="#eadde2"/>
+        <text x="830" y="224" text-anchor="middle" font-size="14" font-weight="700">3경기 승자</text><path d="M220 198 H305 V288 H395" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M555 108 H650 V188 H750" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M555 288 H650 V224 H750" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div><div class="hwp-bracket-row"><svg viewBox="0 0 1000 390" role="img" aria-label="판뒤집기 1학년 대진표"><rect x="0" y="0" width="1000" height="390" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">판뒤집기</text>
+        <text x="140" y="148" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">1경기</text>
+        <rect x="60" y="160" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="140" y="189" text-anchor="middle" font-size="15" font-weight="700">1반</text>
+        <line x1="78" y1="198" x2="202" y2="198" stroke="#eadde2"/>
+        <text x="140" y="224" text-anchor="middle" font-size="14" font-weight="700">2반</text>
+        <text x="475" y="58" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">2경기</text>
+        <rect x="395" y="70" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="475" y="99" text-anchor="middle" font-size="15" font-weight="700">3반</text>
+        <line x1="413" y1="108" x2="537" y2="108" stroke="#eadde2"/>
+        <text x="475" y="134" text-anchor="middle" font-size="14" font-weight="700">4반</text>
+        <text x="475" y="238" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">3경기</text>
+        <rect x="395" y="250" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="475" y="279" text-anchor="middle" font-size="15" font-weight="700">5반</text>
+        <line x1="413" y1="288" x2="537" y2="288" stroke="#eadde2"/>
+        <text x="475" y="314" text-anchor="middle" font-size="14" font-weight="700">1경기 승자</text>
+        <text x="830" y="148" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">4경기</text>
+        <rect x="750" y="160" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="830" y="189" text-anchor="middle" font-size="15" font-weight="700">2경기 승자</text>
+        <line x1="768" y1="198" x2="892" y2="198" stroke="#eadde2"/>
+        <text x="830" y="224" text-anchor="middle" font-size="14" font-weight="700">3경기 승자</text><path d="M220 198 H305 V288 H395" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M555 108 H650 V188 H750" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M555 288 H650 V224 H750" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div><div class="hwp-bracket-row"><svg viewBox="0 0 1000 390" role="img" aria-label="줄다리기 1학년 대진표"><rect x="0" y="0" width="1000" height="390" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">줄다리기</text>
+        <text x="140" y="148" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">1경기</text>
+        <rect x="60" y="160" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="140" y="189" text-anchor="middle" font-size="15" font-weight="700">5반</text>
+        <line x1="78" y1="198" x2="202" y2="198" stroke="#eadde2"/>
+        <text x="140" y="224" text-anchor="middle" font-size="14" font-weight="700">2반</text>
+        <text x="475" y="58" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">2경기</text>
+        <rect x="395" y="70" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="475" y="99" text-anchor="middle" font-size="15" font-weight="700">3반</text>
+        <line x1="413" y1="108" x2="537" y2="108" stroke="#eadde2"/>
+        <text x="475" y="134" text-anchor="middle" font-size="14" font-weight="700">4반</text>
+        <text x="475" y="238" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">3경기</text>
+        <rect x="395" y="250" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="475" y="279" text-anchor="middle" font-size="15" font-weight="700">1반</text>
+        <line x1="413" y1="288" x2="537" y2="288" stroke="#eadde2"/>
+        <text x="475" y="314" text-anchor="middle" font-size="14" font-weight="700">1경기 승자</text>
+        <text x="830" y="148" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">4경기</text>
+        <rect x="750" y="160" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+        <text x="830" y="189" text-anchor="middle" font-size="15" font-weight="700">2경기 승자</text>
+        <line x1="768" y1="198" x2="892" y2="198" stroke="#eadde2"/>
+        <text x="830" y="224" text-anchor="middle" font-size="14" font-weight="700">3경기 승자</text><path d="M220 198 H305 V288 H395" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M555 108 H650 V188 H750" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M555 288 H650 V224 H750" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div></article><article class="hwp-grade-card"><div class="hwp-grade-title">대 진 표(2학년)</div><div class="hwp-bracket-row"><svg viewBox="0 0 1120 500" role="img" aria-label="풋살 2학년 대진표"><rect x="0" y="0" width="1120" height="500" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">풋살</text>
+    <text x="137.0" y="93" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선1</text>
+    <rect x="55" y="105" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="137.0" y="134" text-anchor="middle" font-size="15" font-weight="700">4반</text>
+    <line x1="73" y1="143" x2="201" y2="143" stroke="#eadde2"/>
+    <text x="137.0" y="169" text-anchor="middle" font-size="14" font-weight="700">5반</text>
+    <text x="137.0" y="303" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선2</text>
+    <rect x="55" y="315" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="137.0" y="344" text-anchor="middle" font-size="15" font-weight="700">2반</text>
+    <line x1="73" y1="353" x2="201" y2="353" stroke="#eadde2"/>
+    <text x="137.0" y="379" text-anchor="middle" font-size="14" font-weight="700">6반</text>
+    <text x="502.0" y="93" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선1</text>
+    <rect x="420" y="105" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="502.0" y="134" text-anchor="middle" font-size="15" font-weight="700">3반</text>
+    <line x1="438" y1="143" x2="566" y2="143" stroke="#eadde2"/>
+    <text x="502.0" y="169" text-anchor="middle" font-size="14" font-weight="700">예선1 승자</text>
+    <text x="502.0" y="303" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선2</text>
+    <rect x="420" y="315" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="502.0" y="344" text-anchor="middle" font-size="15" font-weight="700">예선2 승자</text>
+    <line x1="438" y1="353" x2="566" y2="353" stroke="#eadde2"/>
+    <text x="502.0" y="379" text-anchor="middle" font-size="14" font-weight="700">1반</text>
+    <text x="892.0" y="198" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">결승</text>
+    <rect x="810" y="210" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="892.0" y="239" text-anchor="middle" font-size="15" font-weight="700">본선1 승자</text>
+    <line x1="828" y1="248" x2="956" y2="248" stroke="#eadde2"/>
+    <text x="892.0" y="274" text-anchor="middle" font-size="14" font-weight="700">본선2 승자</text><path d="M219 143 H320 V143 H420" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M219 353 H320 V353 H420" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M584 143 H690 V236 H810" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M584 353 H690 V260 H810" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div><div class="hwp-bracket-row"><svg viewBox="0 0 1120 500" role="img" aria-label="배드민턴 2학년 대진표"><rect x="0" y="0" width="1120" height="500" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">배드민턴</text>
+    <text x="137.0" y="93" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선1</text>
+    <rect x="55" y="105" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="137.0" y="134" text-anchor="middle" font-size="15" font-weight="700">4반</text>
+    <line x1="73" y1="143" x2="201" y2="143" stroke="#eadde2"/>
+    <text x="137.0" y="169" text-anchor="middle" font-size="14" font-weight="700">6반</text>
+    <text x="137.0" y="303" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선2</text>
+    <rect x="55" y="315" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="137.0" y="344" text-anchor="middle" font-size="15" font-weight="700">1반</text>
+    <line x1="73" y1="353" x2="201" y2="353" stroke="#eadde2"/>
+    <text x="137.0" y="379" text-anchor="middle" font-size="14" font-weight="700">2반</text>
+    <text x="502.0" y="93" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선1</text>
+    <rect x="420" y="105" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="502.0" y="134" text-anchor="middle" font-size="15" font-weight="700">3반</text>
+    <line x1="438" y1="143" x2="566" y2="143" stroke="#eadde2"/>
+    <text x="502.0" y="169" text-anchor="middle" font-size="14" font-weight="700">예선1 승자</text>
+    <text x="502.0" y="303" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선2</text>
+    <rect x="420" y="315" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="502.0" y="344" text-anchor="middle" font-size="15" font-weight="700">예선2 승자</text>
+    <line x1="438" y1="353" x2="566" y2="353" stroke="#eadde2"/>
+    <text x="502.0" y="379" text-anchor="middle" font-size="14" font-weight="700">5반</text>
+    <text x="892.0" y="198" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">결승</text>
+    <rect x="810" y="210" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="892.0" y="239" text-anchor="middle" font-size="15" font-weight="700">본선1 승자</text>
+    <line x1="828" y1="248" x2="956" y2="248" stroke="#eadde2"/>
+    <text x="892.0" y="274" text-anchor="middle" font-size="14" font-weight="700">본선2 승자</text><path d="M219 143 H320 V143 H420" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M219 353 H320 V353 H420" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M584 143 H690 V236 H810" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M584 353 H690 V260 H810" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div><div class="hwp-bracket-row"><svg viewBox="0 0 1120 500" role="img" aria-label="판뒤집기 2학년 대진표"><rect x="0" y="0" width="1120" height="500" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">판뒤집기</text>
+    <text x="137.0" y="93" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선1</text>
+    <rect x="55" y="105" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="137.0" y="134" text-anchor="middle" font-size="15" font-weight="700">4반</text>
+    <line x1="73" y1="143" x2="201" y2="143" stroke="#eadde2"/>
+    <text x="137.0" y="169" text-anchor="middle" font-size="14" font-weight="700">3반</text>
+    <text x="137.0" y="303" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선2</text>
+    <rect x="55" y="315" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="137.0" y="344" text-anchor="middle" font-size="15" font-weight="700">5반</text>
+    <line x1="73" y1="353" x2="201" y2="353" stroke="#eadde2"/>
+    <text x="137.0" y="379" text-anchor="middle" font-size="14" font-weight="700">1반</text>
+    <text x="502.0" y="93" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선1</text>
+    <rect x="420" y="105" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="502.0" y="134" text-anchor="middle" font-size="15" font-weight="700">6반</text>
+    <line x1="438" y1="143" x2="566" y2="143" stroke="#eadde2"/>
+    <text x="502.0" y="169" text-anchor="middle" font-size="14" font-weight="700">예선1 승자</text>
+    <text x="502.0" y="303" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선2</text>
+    <rect x="420" y="315" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="502.0" y="344" text-anchor="middle" font-size="15" font-weight="700">예선2 승자</text>
+    <line x1="438" y1="353" x2="566" y2="353" stroke="#eadde2"/>
+    <text x="502.0" y="379" text-anchor="middle" font-size="14" font-weight="700">2반</text>
+    <text x="892.0" y="198" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">결승</text>
+    <rect x="810" y="210" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="892.0" y="239" text-anchor="middle" font-size="15" font-weight="700">본선1 승자</text>
+    <line x1="828" y1="248" x2="956" y2="248" stroke="#eadde2"/>
+    <text x="892.0" y="274" text-anchor="middle" font-size="14" font-weight="700">본선2 승자</text><path d="M219 143 H320 V143 H420" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M219 353 H320 V353 H420" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M584 143 H690 V236 H810" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M584 353 H690 V260 H810" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div><div class="hwp-bracket-row"><svg viewBox="0 0 1120 500" role="img" aria-label="줄다리기 2학년 대진표"><rect x="0" y="0" width="1120" height="500" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">줄다리기</text>
+    <text x="137.0" y="93" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선1</text>
+    <rect x="55" y="105" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="137.0" y="134" text-anchor="middle" font-size="15" font-weight="700">6반</text>
+    <line x1="73" y1="143" x2="201" y2="143" stroke="#eadde2"/>
+    <text x="137.0" y="169" text-anchor="middle" font-size="14" font-weight="700">1반</text>
+    <text x="137.0" y="303" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선2</text>
+    <rect x="55" y="315" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="137.0" y="344" text-anchor="middle" font-size="15" font-weight="700">2반</text>
+    <line x1="73" y1="353" x2="201" y2="353" stroke="#eadde2"/>
+    <text x="137.0" y="379" text-anchor="middle" font-size="14" font-weight="700">3반</text>
+    <text x="502.0" y="93" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선1</text>
+    <rect x="420" y="105" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="502.0" y="134" text-anchor="middle" font-size="15" font-weight="700">4반</text>
+    <line x1="438" y1="143" x2="566" y2="143" stroke="#eadde2"/>
+    <text x="502.0" y="169" text-anchor="middle" font-size="14" font-weight="700">예선1 승자</text>
+    <text x="502.0" y="303" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선2</text>
+    <rect x="420" y="315" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="502.0" y="344" text-anchor="middle" font-size="15" font-weight="700">예선2 승자</text>
+    <line x1="438" y1="353" x2="566" y2="353" stroke="#eadde2"/>
+    <text x="502.0" y="379" text-anchor="middle" font-size="14" font-weight="700">5반</text>
+    <text x="892.0" y="198" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">결승</text>
+    <rect x="810" y="210" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="892.0" y="239" text-anchor="middle" font-size="15" font-weight="700">본선1 승자</text>
+    <line x1="828" y1="248" x2="956" y2="248" stroke="#eadde2"/>
+    <text x="892.0" y="274" text-anchor="middle" font-size="14" font-weight="700">본선2 승자</text><path d="M219 143 H320 V143 H420" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M219 353 H320 V353 H420" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M584 143 H690 V236 H810" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M584 353 H690 V260 H810" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div></article><article class="hwp-grade-card"><div class="hwp-grade-title">대 진 표(3학년)</div><div class="hwp-bracket-row"><svg viewBox="0 0 1250 620" role="img" aria-label="풋살 3학년 대진표"><rect x="0" y="0" width="1250" height="620" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">풋살</text>
+    <text x="127.0" y="68" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선1</text>
+    <rect x="45" y="80" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="109" text-anchor="middle" font-size="15" font-weight="700">3반</text>
+    <line x1="63" y1="118" x2="191" y2="118" stroke="#eadde2"/>
+    <text x="127.0" y="144" text-anchor="middle" font-size="14" font-weight="700">5반</text>
+    <text x="127.0" y="248" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선2</text>
+    <rect x="45" y="260" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="289" text-anchor="middle" font-size="15" font-weight="700">7반</text>
+    <line x1="63" y1="298" x2="191" y2="298" stroke="#eadde2"/>
+    <text x="127.0" y="324" text-anchor="middle" font-size="14" font-weight="700">4반</text>
+    <text x="127.0" y="428" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선3</text>
+    <rect x="45" y="440" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="469" text-anchor="middle" font-size="15" font-weight="700">1반</text>
+    <line x1="63" y1="478" x2="191" y2="478" stroke="#eadde2"/>
+    <text x="127.0" y="504" text-anchor="middle" font-size="14" font-weight="700">2반</text>
+    <text x="542.0" y="138" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선1</text>
+    <rect x="460" y="150" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="542.0" y="179" text-anchor="middle" font-size="15" font-weight="700">6반</text>
+    <line x1="478" y1="188" x2="606" y2="188" stroke="#eadde2"/>
+    <text x="542.0" y="214" text-anchor="middle" font-size="14" font-weight="700">예선1 승자</text>
+    <text x="542.0" y="368" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선2</text>
+    <rect x="460" y="380" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="542.0" y="409" text-anchor="middle" font-size="15" font-weight="700">예선2 승자</text>
+    <line x1="478" y1="418" x2="606" y2="418" stroke="#eadde2"/>
+    <text x="542.0" y="444" text-anchor="middle" font-size="14" font-weight="700">예선3 승자</text>
+    <text x="982.0" y="253" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">결승</text>
+    <rect x="900" y="265" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="982.0" y="294" text-anchor="middle" font-size="15" font-weight="700">본선1 승자</text>
+    <line x1="918" y1="303" x2="1046" y2="303" stroke="#eadde2"/>
+    <text x="982.0" y="329" text-anchor="middle" font-size="14" font-weight="700">본선2 승자</text><path d="M209 118 H330 V188 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M209 298 H330 V418 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M209 478 H330 V442 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M624 188 H760 V291 H900" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M624 418 H760 V315 H900" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div><div class="hwp-bracket-row"><svg viewBox="0 0 1250 620" role="img" aria-label="배드민턴 3학년 대진표"><rect x="0" y="0" width="1250" height="620" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">배드민턴</text>
+    <text x="127.0" y="68" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선1</text>
+    <rect x="45" y="80" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="109" text-anchor="middle" font-size="15" font-weight="700">1반</text>
+    <line x1="63" y1="118" x2="191" y2="118" stroke="#eadde2"/>
+    <text x="127.0" y="144" text-anchor="middle" font-size="14" font-weight="700">3반</text>
+    <text x="127.0" y="248" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선2</text>
+    <rect x="45" y="260" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="289" text-anchor="middle" font-size="15" font-weight="700">5반</text>
+    <line x1="63" y1="298" x2="191" y2="298" stroke="#eadde2"/>
+    <text x="127.0" y="324" text-anchor="middle" font-size="14" font-weight="700">2반</text>
+    <text x="127.0" y="428" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선3</text>
+    <rect x="45" y="440" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="469" text-anchor="middle" font-size="15" font-weight="700">4반</text>
+    <line x1="63" y1="478" x2="191" y2="478" stroke="#eadde2"/>
+    <text x="127.0" y="504" text-anchor="middle" font-size="14" font-weight="700">7반</text>
+    <text x="542.0" y="138" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선1</text>
+    <rect x="460" y="150" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="542.0" y="179" text-anchor="middle" font-size="15" font-weight="700">6반</text>
+    <line x1="478" y1="188" x2="606" y2="188" stroke="#eadde2"/>
+    <text x="542.0" y="214" text-anchor="middle" font-size="14" font-weight="700">예선1 승자</text>
+    <text x="542.0" y="368" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선2</text>
+    <rect x="460" y="380" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="542.0" y="409" text-anchor="middle" font-size="15" font-weight="700">예선2 승자</text>
+    <line x1="478" y1="418" x2="606" y2="418" stroke="#eadde2"/>
+    <text x="542.0" y="444" text-anchor="middle" font-size="14" font-weight="700">예선3 승자</text>
+    <text x="982.0" y="253" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">결승</text>
+    <rect x="900" y="265" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="982.0" y="294" text-anchor="middle" font-size="15" font-weight="700">본선1 승자</text>
+    <line x1="918" y1="303" x2="1046" y2="303" stroke="#eadde2"/>
+    <text x="982.0" y="329" text-anchor="middle" font-size="14" font-weight="700">본선2 승자</text><path d="M209 118 H330 V188 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M209 298 H330 V418 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M209 478 H330 V442 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M624 188 H760 V291 H900" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M624 418 H760 V315 H900" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div><div class="hwp-bracket-row"><svg viewBox="0 0 1250 620" role="img" aria-label="판뒤집기 3학년 대진표"><rect x="0" y="0" width="1250" height="620" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">판뒤집기</text>
+    <text x="127.0" y="68" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선1</text>
+    <rect x="45" y="80" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="109" text-anchor="middle" font-size="15" font-weight="700">6반</text>
+    <line x1="63" y1="118" x2="191" y2="118" stroke="#eadde2"/>
+    <text x="127.0" y="144" text-anchor="middle" font-size="14" font-weight="700">7반</text>
+    <text x="127.0" y="248" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선2</text>
+    <rect x="45" y="260" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="289" text-anchor="middle" font-size="15" font-weight="700">1반</text>
+    <line x1="63" y1="298" x2="191" y2="298" stroke="#eadde2"/>
+    <text x="127.0" y="324" text-anchor="middle" font-size="14" font-weight="700">3반</text>
+    <text x="127.0" y="428" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선3</text>
+    <rect x="45" y="440" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="469" text-anchor="middle" font-size="15" font-weight="700">4반</text>
+    <line x1="63" y1="478" x2="191" y2="478" stroke="#eadde2"/>
+    <text x="127.0" y="504" text-anchor="middle" font-size="14" font-weight="700">5반</text>
+    <text x="542.0" y="138" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선1</text>
+    <rect x="460" y="150" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="542.0" y="179" text-anchor="middle" font-size="15" font-weight="700">2반</text>
+    <line x1="478" y1="188" x2="606" y2="188" stroke="#eadde2"/>
+    <text x="542.0" y="214" text-anchor="middle" font-size="14" font-weight="700">예선1 승자</text>
+    <text x="542.0" y="368" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선2</text>
+    <rect x="460" y="380" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="542.0" y="409" text-anchor="middle" font-size="15" font-weight="700">예선2 승자</text>
+    <line x1="478" y1="418" x2="606" y2="418" stroke="#eadde2"/>
+    <text x="542.0" y="444" text-anchor="middle" font-size="14" font-weight="700">예선3 승자</text>
+    <text x="982.0" y="253" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">결승</text>
+    <rect x="900" y="265" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="982.0" y="294" text-anchor="middle" font-size="15" font-weight="700">본선1 승자</text>
+    <line x1="918" y1="303" x2="1046" y2="303" stroke="#eadde2"/>
+    <text x="982.0" y="329" text-anchor="middle" font-size="14" font-weight="700">본선2 승자</text><path d="M209 118 H330 V188 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M209 298 H330 V418 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M209 478 H330 V442 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M624 188 H760 V291 H900" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M624 418 H760 V315 H900" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div><div class="hwp-bracket-row"><svg viewBox="0 0 1250 620" role="img" aria-label="줄다리기 3학년 대진표"><rect x="0" y="0" width="1250" height="620" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">줄다리기</text>
+    <text x="127.0" y="68" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선1</text>
+    <rect x="45" y="80" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="109" text-anchor="middle" font-size="15" font-weight="700">4반</text>
+    <line x1="63" y1="118" x2="191" y2="118" stroke="#eadde2"/>
+    <text x="127.0" y="144" text-anchor="middle" font-size="14" font-weight="700">5반</text>
+    <text x="127.0" y="248" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선2</text>
+    <rect x="45" y="260" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="289" text-anchor="middle" font-size="15" font-weight="700">3반</text>
+    <line x1="63" y1="298" x2="191" y2="298" stroke="#eadde2"/>
+    <text x="127.0" y="324" text-anchor="middle" font-size="14" font-weight="700">6반</text>
+    <text x="127.0" y="428" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선3</text>
+    <rect x="45" y="440" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="127.0" y="469" text-anchor="middle" font-size="15" font-weight="700">1반</text>
+    <line x1="63" y1="478" x2="191" y2="478" stroke="#eadde2"/>
+    <text x="127.0" y="504" text-anchor="middle" font-size="14" font-weight="700">2반</text>
+    <text x="542.0" y="138" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선1</text>
+    <rect x="460" y="150" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="542.0" y="179" text-anchor="middle" font-size="15" font-weight="700">7반</text>
+    <line x1="478" y1="188" x2="606" y2="188" stroke="#eadde2"/>
+    <text x="542.0" y="214" text-anchor="middle" font-size="14" font-weight="700">예선1 승자</text>
+    <text x="542.0" y="368" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">본선2</text>
+    <rect x="460" y="380" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="542.0" y="409" text-anchor="middle" font-size="15" font-weight="700">예선2 승자</text>
+    <line x1="478" y1="418" x2="606" y2="418" stroke="#eadde2"/>
+    <text x="542.0" y="444" text-anchor="middle" font-size="14" font-weight="700">예선3 승자</text>
+    <text x="982.0" y="253" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">결승</text>
+    <rect x="900" y="265" width="164" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+    <text x="982.0" y="294" text-anchor="middle" font-size="15" font-weight="700">본선1 승자</text>
+    <line x1="918" y1="303" x2="1046" y2="303" stroke="#eadde2"/>
+    <text x="982.0" y="329" text-anchor="middle" font-size="14" font-weight="700">본선2 승자</text><path d="M209 118 H330 V188 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M209 298 H330 V418 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M209 478 H330 V442 H460" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M624 188 H760 V291 H900" fill="none" stroke="#8d6573" stroke-width="3"/><path d="M624 418 H760 V315 H900" fill="none" stroke="#8d6573" stroke-width="3"/></svg></div>
+    <div class="hwp-bracket-row"><svg viewBox="0 0 1000 310" role="img" aria-label="계주 3학년 대진표">
+      <rect x="0" y="0" width="1000" height="310" rx="16" fill="#fff" stroke="#eadde2"/>
+      <text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">계주</text>
+      <text x="165" y="88" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선 1조</text>
+      <rect x="70" y="105" width="190" height="70" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+      <text x="165" y="147" text-anchor="middle" font-size="16" font-weight="700">2 · 4 · 6반</text>
+
+      <text x="165" y="218" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">예선 2조</text>
+      <rect x="70" y="235" width="190" height="55" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+      <text x="165" y="269" text-anchor="middle" font-size="16" font-weight="700">1 · 3 · 5 · 7반</text>
+
+      <text x="710" y="142" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">결승</text>
+      <rect x="615" y="159" width="190" height="70" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
+      <text x="710" y="201" text-anchor="middle" font-size="15" font-weight="700">예선 통과 학급</text>
+
+      <path d="M260 140 H430 V183 H615" fill="none" stroke="#8d6573" stroke-width="3"/>
+      <path d="M260 262 H430 V205 H615" fill="none" stroke="#8d6573" stroke-width="3"/>
+    </svg></div></article></div>
+</div></section>
 
 <section id="players" class="section">
   <div class="wrap">
@@ -379,6 +711,32 @@ try {
       <p class="small" style="margin-top:10px">
         ※ 판뒤집기와 줄다리기는 학급 전체 참가 종목입니다. 개인 종목은 제출된 참가신청서 기준입니다.
       </p>
+    </div>
+
+    <div class="card full" style="margin-top:18px">
+      <h3>📄 출전선수 학급으로 조회</h3>
+      <p class="small">학년과 반을 선택하면 해당 학급의 최종 참가신청서 전체 내용을 확인할 수 있습니다.</p>
+      <div class="formrow" style="grid-template-columns:1fr 1fr auto">
+        <div class="field">
+          <label>학년</label>
+          <select id="classSheetGrade" onchange="updateClassSheetClassOptions()">
+            <option value="1">1학년</option>
+            <option value="2">2학년</option>
+            <option value="3">3학년</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>반</label>
+          <select id="classSheetClass"></select>
+        </div>
+        <div class="field" style="justify-content:end">
+          <label>&nbsp;</label>
+          <button class="btn primary" onclick="showClassApplication()">참가신청서 보기</button>
+        </div>
+      </div>
+      <div id="classApplicationResult" class="result" style="margin-top:14px">
+        학년과 반을 선택한 뒤 참가신청서 보기를 눌러 주세요.
+      </div>
     </div>
   </div>
 </section>
@@ -550,7 +908,7 @@ function savePlayers(){let raw=playersText.value.trim(),arr=[];raw.split(/\n+/).
 function legacyFindPlayer(){let no=studentNo?.value?.trim?.()||'',name=studentName?.value?.trim?.()||'',p=ls('sportsday_players',[]).find(x=>x.no===no&&x.name===name);return p;}
 
 const OFFICIAL_ROSTER={"1-1":[{"no":1,"name":"강지윤"},{"no":2,"name":"김건율"},{"no":3,"name":"김규린"},{"no":4,"name":"김민서"},{"no":5,"name":"김세인"},{"no":6,"name":"김시윤"},{"no":7,"name":"문신우"},{"no":8,"name":"박민성"},{"no":9,"name":"박시연"},{"no":10,"name":"박진현"},{"no":11,"name":"반경환"},{"no":12,"name":"신재인"},{"no":13,"name":"오승현"},{"no":14,"name":"유예지"},{"no":15,"name":"유태욱"},{"no":16,"name":"이동연"},{"no":17,"name":"이서협"},{"no":18,"name":"장민혁"},{"no":19,"name":"정아리"},{"no":20,"name":"정예원"},{"no":21,"name":"정윤서"},{"no":22,"name":"최연재"},{"no":23,"name":"최준서"}],"1-2":[{"no":1,"name":"김도윤"},{"no":2,"name":"김도현"},{"no":3,"name":"김윤성"},{"no":4,"name":"김채희"},{"no":5,"name":"김태희"},{"no":6,"name":"김한나"},{"no":7,"name":"노하윤"},{"no":8,"name":"박예원"},{"no":9,"name":"정원외학적관리"},{"no":10,"name":"배예현"},{"no":11,"name":"송승현"},{"no":12,"name":"신승우"},{"no":13,"name":"원호준"},{"no":14,"name":"위승헌"},{"no":15,"name":"윤주산"},{"no":16,"name":"이민준"},{"no":17,"name":"이승우"},{"no":18,"name":"전두솔"},{"no":19,"name":"정하은"},{"no":20,"name":"정한결"},{"no":21,"name":"최수현"},{"no":22,"name":"최윤서"},{"no":23,"name":"TULGA SHURSUVD"}],"1-3":[{"no":1,"name":"김근후"},{"no":2,"name":"김민서"},{"no":3,"name":"김민찬"},{"no":4,"name":"김시온"},{"no":5,"name":"박시환"},{"no":6,"name":"박예은"},{"no":7,"name":"박채율"},{"no":8,"name":"석정제"},{"no":9,"name":"신영준"},{"no":10,"name":"신지수"},{"no":11,"name":"양채연"},{"no":12,"name":"이승주"},{"no":13,"name":"이윤후"},{"no":14,"name":"이재이"},{"no":15,"name":"이준우"},{"no":16,"name":"전승현"},{"no":17,"name":"전지은"},{"no":18,"name":"정서윤"},{"no":19,"name":"정인재"},{"no":20,"name":"조성진"},{"no":21,"name":"조용훈"},{"no":22,"name":"조이건"},{"no":23,"name":"한수용"}],"1-4":[{"no":1,"name":"권수빈"},{"no":2,"name":"김시우"},{"no":3,"name":"김시은"},{"no":4,"name":"김주용"},{"no":5,"name":"김준호"},{"no":6,"name":"김채현"},{"no":7,"name":"김태윤"},{"no":8,"name":"문소민"},{"no":9,"name":"박태훈"},{"no":10,"name":"성민준"},{"no":11,"name":"신재현"},{"no":12,"name":"TUGULDUR EGSHIGLEN"},{"no":13,"name":"유나은"},{"no":14,"name":"유영주"},{"no":15,"name":"윤하윤"},{"no":16,"name":"이소민"},{"no":17,"name":"이윤성"},{"no":18,"name":"이지아"},{"no":19,"name":"정운호"},{"no":20,"name":"정주영"},{"no":21,"name":"채지후"},{"no":22,"name":"홍서진"}],"1-5":[{"no":1,"name":"김도은"},{"no":2,"name":"김민준"},{"no":3,"name":"김민창"},{"no":4,"name":"김지한"},{"no":5,"name":"김태윤"},{"no":6,"name":"노예린"},{"no":7,"name":"류지율"},{"no":8,"name":"문희윤"},{"no":9,"name":"민세영"},{"no":10,"name":"박윤세"},{"no":11,"name":"박재완"},{"no":12,"name":"서지석"},{"no":13,"name":"서휘영"},{"no":14,"name":"이수정"},{"no":15,"name":"이찬율"},{"no":16,"name":"임수빈"},{"no":17,"name":"전서윤"},{"no":18,"name":"전재인"},{"no":19,"name":"정승하"},{"no":20,"name":"최윤설"},{"no":21,"name":"허준서"},{"no":22,"name":"황유현"}],"2-1":[{"no":1,"name":"강민규"},{"no":2,"name":"공도현"},{"no":3,"name":"김다은"},{"no":4,"name":"김도균"},{"no":5,"name":"김도혁"},{"no":6,"name":"김륜호"},{"no":7,"name":"김예원"},{"no":8,"name":"김지우"},{"no":9,"name":"노유진"},{"no":10,"name":"마서준"},{"no":11,"name":"박연우"},{"no":12,"name":"성시환"},{"no":13,"name":"신유환"},{"no":14,"name":"신은율"},{"no":15,"name":"DORJNAMJIM ANU-UJIN"},{"no":16,"name":"오성준"},{"no":17,"name":"이선효"},{"no":18,"name":"이성민"},{"no":19,"name":"이시언"},{"no":20,"name":"이아윤"},{"no":21,"name":"이유진"},{"no":22,"name":"이현서"},{"no":23,"name":"임지율"},{"no":24,"name":"장예린"},{"no":25,"name":"전이준"},{"no":26,"name":"조윤아"},{"no":27,"name":"최은소"},{"no":28,"name":"한태성"}],"2-2":[{"no":1,"name":"곽한이"},{"no":2,"name":"김도윤"},{"no":3,"name":"김도하"},{"no":4,"name":"김동민"},{"no":5,"name":"김승헌"},{"no":6,"name":"김예빈"},{"no":7,"name":"김예슬"},{"no":8,"name":"김은서"},{"no":9,"name":"김응철"},{"no":10,"name":"김지오"},{"no":11,"name":"김지환"},{"no":12,"name":"김태은"},{"no":13,"name":"박제은"},{"no":14,"name":"반서윤"},{"no":15,"name":"송소율"},{"no":16,"name":"양다은"},{"no":17,"name":"이승환"},{"no":18,"name":"이희서"},{"no":19,"name":"임현석"},{"no":20,"name":"전충헌"},{"no":21,"name":"정다운"},{"no":22,"name":"정은찬"},{"no":23,"name":"조아란"},{"no":24,"name":"천예원"},{"no":25,"name":"천하림"},{"no":26,"name":"최마루"},{"no":27,"name":"최유준"},{"no":28,"name":"허은혁"}],"2-3":[{"no":1,"name":"김강민"},{"no":2,"name":"김도윤"},{"no":3,"name":"김범준"},{"no":4,"name":"김찬우"},{"no":5,"name":"김휘건"},{"no":6,"name":"박서준"},{"no":7,"name":"박혜미"},{"no":8,"name":"배서인"},{"no":9,"name":"변은성"},{"no":10,"name":"여수영"},{"no":11,"name":"오승찬"},{"no":12,"name":"오지후"},{"no":13,"name":"오채영"},{"no":14,"name":"윤태산"},{"no":15,"name":"이강우"},{"no":16,"name":"이건무"},{"no":17,"name":"이다윤"},{"no":18,"name":"이윤서"},{"no":19,"name":"이지유"},{"no":20,"name":"이창영"},{"no":21,"name":"이희은"},{"no":22,"name":"전태우"},{"no":23,"name":"전태인"},{"no":24,"name":"정다연"},{"no":25,"name":"정시우"},{"no":26,"name":"정예림"},{"no":27,"name":"채서연"},{"no":28,"name":"최장혁"}],"2-4":[{"no":1,"name":"강서우"},{"no":2,"name":"곽강이"},{"no":3,"name":"곽찬송"},{"no":4,"name":"김기현"},{"no":5,"name":"김동욱"},{"no":6,"name":"김민석"},{"no":7,"name":"김민성"},{"no":8,"name":"김선"},{"no":9,"name":"김영민"},{"no":10,"name":"김예빈"},{"no":11,"name":"김인정"},{"no":12,"name":"김주호"},{"no":13,"name":"김태율"},{"no":14,"name":"김혜빈"},{"no":15,"name":"남기용"},{"no":16,"name":"박산아"},{"no":17,"name":"박서진"},{"no":18,"name":"박시현"},{"no":19,"name":"손준혁"},{"no":20,"name":"신서준"},{"no":21,"name":"신아람"},{"no":22,"name":"유혜진"},{"no":23,"name":"이우빈"},{"no":24,"name":"이재훈"},{"no":25,"name":"이희찬"},{"no":26,"name":"정세윤"},{"no":27,"name":"정유현"},{"no":28,"name":"한승범"}],"2-5":[{"no":1,"name":"강주하"},{"no":2,"name":"고은영"},{"no":3,"name":"권민서"},{"no":4,"name":"김나현"},{"no":5,"name":"김명준"},{"no":6,"name":"김민지"},{"no":7,"name":"김하윤"},{"no":8,"name":"박태연"},{"no":9,"name":"박하음"},{"no":10,"name":"ODGEREL SOYOMBO"},{"no":11,"name":"송효준"},{"no":12,"name":"안지성"},{"no":13,"name":"안혜원"},{"no":14,"name":"연정모"},{"no":15,"name":"윤병준"},{"no":16,"name":"윤서진"},{"no":17,"name":"윤정해"},{"no":18,"name":"이승준"},{"no":19,"name":"이유찬"},{"no":20,"name":"이휘건"},{"no":21,"name":"임규민"},{"no":22,"name":"임종현"},{"no":23,"name":"채준영"},{"no":24,"name":"천소망"},{"no":25,"name":"최규"},{"no":26,"name":"최세현"},{"no":27,"name":"한정민"},{"no":28,"name":"허아정"}],"2-6":[{"no":1,"name":"김규리"},{"no":2,"name":"김민건"},{"no":3,"name":"김민준"},{"no":4,"name":"김지현"},{"no":5,"name":"김태윤"},{"no":6,"name":"남우현"},{"no":7,"name":"남하랑"},{"no":8,"name":"박소윤"},{"no":9,"name":"박재현"},{"no":10,"name":"송주영"},{"no":11,"name":"송지율"},{"no":12,"name":"신태윤"},{"no":13,"name":"이나린"},{"no":14,"name":"이라결"},{"no":15,"name":"이영찬"},{"no":16,"name":"이유하"},{"no":17,"name":"이재신"},{"no":18,"name":"이재용"},{"no":19,"name":"이재호"},{"no":20,"name":"임은수"},{"no":21,"name":"정재아"},{"no":22,"name":"유예"},{"no":23,"name":"조현빈"},{"no":24,"name":"지은우"},{"no":25,"name":"최성빈"},{"no":26,"name":"최윤진"},{"no":27,"name":"최지우"},{"no":28,"name":"한서준"},{"no":29,"name":"김민성"}],"3-1":[{"no":1,"name":"강보민"},{"no":2,"name":"강태현"},{"no":3,"name":"김란희"},{"no":4,"name":"김민석"},{"no":5,"name":"나효린"},{"no":6,"name":"박해성"},{"no":7,"name":"배서연"},{"no":8,"name":"배지유"},{"no":9,"name":"양하준"},{"no":10,"name":"유래이"},{"no":11,"name":"윤시은"},{"no":12,"name":"윤시후"},{"no":13,"name":"이나경"},{"no":14,"name":"이여명"},{"no":15,"name":"이예지"},{"no":16,"name":"이용준"},{"no":17,"name":"전소민"},{"no":18,"name":"정소영"},{"no":19,"name":"정지후"},{"no":20,"name":"조아윤"},{"no":21,"name":"채희율"},{"no":22,"name":"최담은"},{"no":23,"name":"한승현"},{"no":24,"name":"XUJINGHONG"},{"no":25,"name":"허준혁"},{"no":26,"name":"홍효주"},{"no":27,"name":"황애현"}],"3-2":[{"no":1,"name":"김규민"},{"no":2,"name":"김민서"},{"no":3,"name":"김민지"},{"no":4,"name":"김서연"},{"no":5,"name":"김익"},{"no":6,"name":"김효은"},{"no":7,"name":"박서현"},{"no":8,"name":"박지민"},{"no":9,"name":"반서진"},{"no":10,"name":"빈지수"},{"no":11,"name":"성서연"},{"no":12,"name":"송윤서"},{"no":13,"name":"신동학"},{"no":14,"name":"안지훈"},{"no":15,"name":"원호연"},{"no":16,"name":"유소연"},{"no":17,"name":"유예림"},{"no":18,"name":"이다민"},{"no":19,"name":"이준우"},{"no":20,"name":"정률희"},{"no":21,"name":"정연주"},{"no":22,"name":"정지윤"},{"no":23,"name":"정지인"},{"no":24,"name":"정진아"},{"no":25,"name":"홍성훈"},{"no":26,"name":"황규빈"},{"no":27,"name":"황선후"}],"3-3":[{"no":1,"name":"강시후"},{"no":2,"name":"강한별"},{"no":3,"name":"김건민"},{"no":4,"name":"김규림"},{"no":5,"name":"김연재"},{"no":6,"name":"김은조"},{"no":7,"name":"김지율"},{"no":8,"name":"김채령"},{"no":9,"name":"김혜림"},{"no":10,"name":"나연흠"},{"no":11,"name":"박소율"},{"no":12,"name":"박준서"},{"no":13,"name":"배서윤"},{"no":14,"name":"배솔아"},{"no":15,"name":"양석현"},{"no":16,"name":"ERDENEBAYAROCHIRBAT"},{"no":17,"name":"연서현"},{"no":18,"name":"연시윤"},{"no":19,"name":"윤시윤"},{"no":20,"name":"윤채원"},{"no":21,"name":"이시현"},{"no":22,"name":"이윤서"},{"no":23,"name":"이희진"},{"no":24,"name":"임경진"},{"no":25,"name":"정민찬"},{"no":26,"name":"최지유"},{"no":27,"name":"허건영"}],"3-4":[{"no":1,"name":"고가람"},{"no":2,"name":"권도엽"},{"no":3,"name":"권민서"},{"no":4,"name":"김가은"},{"no":5,"name":"김경은"},{"no":6,"name":"김다은"},{"no":7,"name":"김민지"},{"no":8,"name":"김보민"},{"no":9,"name":"김준혁"},{"no":10,"name":"김지언"},{"no":11,"name":"김혜림"},{"no":12,"name":"민지환"},{"no":13,"name":"박규리"},{"no":14,"name":"박성준"},{"no":15,"name":"박시율"},{"no":16,"name":"박정현"},{"no":17,"name":"박현정"},{"no":18,"name":"서지우"},{"no":19,"name":"신명윤"},{"no":20,"name":"신지환"},{"no":21,"name":"윤희"},{"no":22,"name":"이다은"},{"no":23,"name":"이선민"},{"no":24,"name":"이예서"},{"no":25,"name":"이우진"},{"no":26,"name":"임서인"},{"no":27,"name":"홍성효"}],"3-5":[{"no":1,"name":"강수민"},{"no":2,"name":"권하음"},{"no":3,"name":"김규림"},{"no":4,"name":"김남규"},{"no":5,"name":"김도원"},{"no":6,"name":"김세아"},{"no":7,"name":"남정원"},{"no":8,"name":"남준혁"},{"no":9,"name":"박지은"},{"no":10,"name":"박채원"},{"no":11,"name":"배예준"},{"no":12,"name":"빈지우"},{"no":13,"name":"송지우"},{"no":14,"name":"염민정"},{"no":15,"name":"예지은"},{"no":16,"name":"윤관"},{"no":17,"name":"이강우"},{"no":18,"name":"이영호"},{"no":19,"name":"이정민"},{"no":20,"name":"이주하"},{"no":21,"name":"정하음"},{"no":22,"name":"정혜연"},{"no":23,"name":"채영빈"},{"no":24,"name":"최명훈"},{"no":25,"name":"한민지"},{"no":26,"name":"홍성민"},{"no":27,"name":"황유희"}],"3-6":[{"no":1,"name":"강나율"},{"no":2,"name":"권민준"},{"no":3,"name":"박민영"},{"no":4,"name":"박주한"},{"no":5,"name":"박준우"},{"no":6,"name":"변예린"},{"no":7,"name":"손태양"},{"no":8,"name":"신동준"},{"no":9,"name":"양희"},{"no":10,"name":"여은솔"},{"no":11,"name":"오원영"},{"no":12,"name":"위예슬"},{"no":13,"name":"유재범"},{"no":14,"name":"이가영"},{"no":15,"name":"이강훈"},{"no":16,"name":"이서현"},{"no":17,"name":"이승아"},{"no":18,"name":"이연주"},{"no":19,"name":"이정서"},{"no":20,"name":"이채연"},{"no":21,"name":"이태준"},{"no":22,"name":"전현재"},{"no":23,"name":"정상훈"},{"no":24,"name":"최정인"},{"no":25,"name":"최지원"},{"no":26,"name":"황세연"},{"no":27,"name":"황예윤"}],"3-7":[{"no":1,"name":"강윤지"},{"no":2,"name":"김고은"},{"no":3,"name":"김빛나"},{"no":4,"name":"김연재"},{"no":5,"name":"김정연"},{"no":6,"name":"김지원"},{"no":7,"name":"민승원"},{"no":8,"name":"박다인"},{"no":9,"name":"박시연"},{"no":10,"name":"박재환"},{"no":11,"name":"배민성"},{"no":12,"name":"송태윤"},{"no":13,"name":"양가은"},{"no":14,"name":"BATZORIGENKHDUL"},{"no":15,"name":"오권준"},{"no":16,"name":"유다현"},{"no":17,"name":"유수민"},{"no":18,"name":"이도희"},{"no":19,"name":"이선우"},{"no":20,"name":"이윤서"},{"no":21,"name":"이윤지"},{"no":22,"name":"이하진"},{"no":23,"name":"정진우"},{"no":24,"name":"주혜원"},{"no":25,"name":"최은률"},{"no":26,"name":"최준규"},{"no":27,"name":"홍예진"}]};
-const OFFICIAL_PLAYERS={"1-1":{"futsal":["김민서","김시윤","문신우","박민성","반경환","이동연","이서협","장민혁","최준서"],"candidates":["김시윤","박민성"],"badminton":[{"court":"A코트","pair":["정윤서","정아리"]},{"court":"B코트","pair":["최연재","박시연"]},{"court":"C코트","pair":["신재인","강지윤"]},{"court":"D코트","pair":["유예지","김규린"]},{"court":"E코트","pair":["박진현","유태욱"]}],"threeleg":["강지윤","신재인","김세인","정예원","정윤서","최연재","박민성","김건율","이동연","이서협","김민서","반경환"],"rope8":["오승현","김시윤","김규린","정아리","박시연","박진현","유예지","유태욱","장민혁","최준서"],"relay":{"여":["박시연","최연재","정아리"],"남":["김민서","이서협","반경환"]},"wholeClass":["판뒤집기","줄다리기"]},"1-2":{"futsal":["김도윤","송승현","신승우","원호준","위승헌","윤주산","최수현","전두솔","정한결"],"candidates":[],"badminton":[{"court":"A코트","pair":["김채희","김태희"]},{"court":"B코트","pair":["김한나","배예현"]},{"court":"C코트","pair":["박예원","정하은"]},{"court":"D코트","pair":["최윤서","추진주"]},{"court":"E코트","pair":["이민준","이승우"]}],"threeleg":["김도현","김윤성","김채희","김태희","박예원","배예현","이민준","이승우","정한결","최수현","최윤서","추진주"],"rope8":["김도윤","김한나","노하윤","원호준","송승현","신승우","위승헌","윤주산","전두솔","정하은"],"relay":{"여":["최윤서","김한나","노하윤"],"남":["윤주산","정한결","김윤성"]},"wholeClass":["판뒤집기","줄다리기"]},"1-3":{"futsal":["김근후","신영준","이윤후","이준우","전승현","정인재","조성진","조용훈","한수용"],"candidates":[],"badminton":[{"court":"A코트","pair":["김민서","신지수"]},{"court":"B코트","pair":["김시온","양채연"]},{"court":"C코트","pair":["박채율","이승주"]},{"court":"D코트","pair":["전지은","정서윤"]},{"court":"E코트","pair":["김민찬","박시환"]}],"threeleg":["김민찬","석정제","양채연","이재이","전승현","전지은","정서윤","정인재","조성진","조용훈","조이건","한수용"],"rope8":["김근후","김민서","김시온","박시환","박채율","신영준","신지수","이승주","이윤후","이준우"],"relay":{"여":["김민서","신지수","이승주"],"남":["신영준","이윤후","이준우"]},"wholeClass":["판뒤집기","줄다리기"]},"1-4":{"futsal":["김시우","김준호","김태윤","성민준","이윤성","채지후","홍서진","김주용","박태훈"],"candidates":[],"badminton":[{"court":"A코트","pair":["김시은","윤하윤"]},{"court":"B코트","pair":["문소민","TUGULDUR EGSHIGLEN"]},{"court":"C코트","pair":["유나은","이소민"]},{"court":"D코트","pair":["권수빈","김채현"]},{"court":"E코트","pair":["신재현","정운호"]}],"threeleg":["김시은","김주용","김태윤","문소민","성민준","유영주","윤하윤","이윤성","이소민","정주영","채지후","홍서진"],"rope8":["권수빈","김시우","김준호","김채현","김주용","박태훈","유나은","이지아","신재현","TUGULDUR EGSHIGLEN"],"relay":{"여":["권수빈","김시은","이소민"],"남":["성민준","채지후","홍서진"]},"wholeClass":["판뒤집기","줄다리기"]},"1-5":{"futsal":["김민창","박윤세","정승하","전서윤","서지석","김지한","김민준","박재완","김태윤"],"candidates":["박재완","김태윤"],"badminton":[{"court":"A코트","pair":["노예린","이수정"]},{"court":"B코트","pair":["류지율","전재인"]},{"court":"C코트","pair":["김도은","문희윤"]},{"court":"D코트","pair":["민세영","임수빈"]},{"court":"E코트","pair":["허준서","황유현"]}],"threeleg":["민세영","임수빈","서휘영","이찬율","황유현","김도은","정승하","류지율","전재인","허준서","이수정","김민창"],"rope8":["최윤설","노예린","김태윤","김지한","전서윤","박재완","김민준","박윤세","서지석","문희윤"],"relay":{"여":["이수정","류지율","전재인"],"남":["박윤세","서지석","허준서"]},"wholeClass":["판뒤집기","줄다리기"]},"2-1":{"futsal":["이성민","마서준","임지율","이현서","김륜호","전이준","오성준","한태성","박연우"],"candidates":[],"badminton":[{"court":"A코트","pair":["신은율","김다은"]},{"court":"B코트","pair":["DORJNAMJIM ANU-UJIN","김예원"]},{"court":"C코트","pair":["이선효","이아윤"]},{"court":"D코트","pair":["이유진","노유진"]},{"court":"E코트","pair":["김도균","성시환"]}],"threeleg":["DORJNAMJIM ANU-UJIN","이시언","조윤아","김지우","이선효","장예린","오성준","최은소","한태성","신유환","공도현","박연우"],"rope8":["신은율","김예원","이성민","마서준","김다은","전이준","성시환","임지율","이현서","김도균"],"relay":{"여":["DORJNAMJIM ANU-UJIN","이시언","김다은"],"남":["김륜호","임지율","전이준"]},"wholeClass":["판뒤집기","줄다리기"]},"2-2":{"futsal":["정은찬","허은혁","김동민","김승헌","최유준","김응철","김지오","최마루","반서윤"],"candidates":["최마루","반서윤"],"badminton":[{"court":"A코트","pair":["김태은","김은서"]},{"court":"B코트","pair":["김예슬","곽한이"]},{"court":"C코트","pair":["천하림","양다은"]},{"court":"D코트","pair":["조아란","박제은"]},{"court":"E코트","pair":["임현석","전충헌"]}],"threeleg":["김도윤","임현석","전충헌","이희서","김예슬","김은서","천예원","김예빈","이승환","김도하","김동민","최마루"],"rope8":["김승헌","양다은","송소율","김응철","반서윤","김지환","김지오","정다운","김태은","최유준"],"relay":{"여":["박제은","김예슬","이희서"],"남":["김동민","김도하","김승헌"]},"wholeClass":["판뒤집기","줄다리기"]},"2-3":{"futsal":["김찬우","박서준","변은성","이강우","이창영","전태우","전태인","정시우","최장혁"],"candidates":[],"badminton":[{"court":"A코트","pair":["박혜미","배서인"]},{"court":"B코트","pair":["채서연","여수영"]},{"court":"C코트","pair":["이다윤","정예림"]},{"court":"D코트","pair":["김도윤","이지유"]},{"court":"E코트","pair":["김범준","윤태산"]}],"threeleg":["이윤서","이희은","정예림","김휘건","오승찬","오지후","이건무","이창영","전태우","박혜미","배서인","오채영"],"rope8":["김강민","여수영","채서연","이다윤","이지유","정다연","박서준","김찬우","이강우","최장혁"],"relay":{"여":["여수영","이윤서","정예림"],"남":["김찬우","이창영","정시우"]},"wholeClass":["판뒤집기","줄다리기"]},"2-4":{"futsal":["신서준","김영민","남기용","김민성","김주호","김민석","이우빈","김동욱","이재훈"],"candidates":[],"badminton":[{"court":"A코트","pair":["정세윤","김선"]},{"court":"B코트","pair":["김인정","강서우"]},{"court":"C코트","pair":["곽강이","박서진"]},{"court":"D코트","pair":["김예빈","신아람"]},{"court":"E코트","pair":["정유현","김태율"]}],"threeleg":["한승범","김민성","이우빈","정유현","이희찬","이재훈","박산아","김선","김혜빈","유혜진","강서우","김인정"],"rope8":["김동욱","김주호","김기현","박시현","김민석","곽찬송","신아람","김태율","남기용","손준혁"],"relay":{"여":["신아람","강서우","김혜빈"],"남":["김주호","남기용","정유현"]},"wholeClass":["판뒤집기","줄다리기"]},"2-5":{"futsal":["ODGEREL SOYOMBO","송효준","안지성","연정모","이승준","임규민","채준영","윤서진","이유찬"],"candidates":["윤서진","이유찬"],"badminton":[{"court":"A코트","pair":["천소망","김하윤"]},{"court":"B코트","pair":["고은영","박하음"]},{"court":"C코트","pair":["권민서","윤정해"]},{"court":"D코트","pair":["김민지","김나현"]},{"court":"E코트","pair":["최세현","최규"]}],"threeleg":["강주하","박태연","허아정","권민서","안혜원","윤정해","ODGEREL SOYOMBO","안지성","임규민","윤병준","임종현","한정민"],"rope8":["김민지","김명준","연정모","윤서진","이유찬","김하윤","이휘건","채준영","최규","최세현"],"relay":{"여":["천소망","고은영","박하음"],"남":["ODGEREL SOYOMBO","이승준","임규민"]},"wholeClass":["판뒤집기","줄다리기"]},"2-6":{"futsal":["김민건","남우현","박재현","신태윤","이라결","이영찬","이재호","최성빈","한서준"],"candidates":[],"badminton":[{"court":"A코트","pair":["김규리","이나린"]},{"court":"B코트","pair":["송주영","최윤진"]},{"court":"C코트","pair":["김지현","송지율"]},{"court":"D코트","pair":["이유하","최지우"]},{"court":"E코트","pair":["이재용","조현빈"]}],"threeleg":["이라결","이재용","이재호","남하랑","조현빈","최성빈","김민준","남우현","한서준","김규리","이유하","최지우"],"rope8":["김민건","박소윤","박재현","송지율","신태윤","이영찬","이재신","임은수","정재아","최윤진"],"relay":{"여":["송지율","이유하","최윤진"],"남":["김민준","남우현","신태윤"]},"wholeClass":["판뒤집기","줄다리기"]},"3-1":{"futsal":["강태현","김민석","채희율","박해성","이여명","XUJINGHONG","허준혁","양하준","정소영"],"candidates":[],"badminton":[{"court":"A코트","pair":["나효린","이예지"]},{"court":"B코트","pair":["최담은","황애현"]},{"court":"C코트","pair":["배서연","이나경"]},{"court":"D코트","pair":["배지유","김란희"]},{"court":"E코트","pair":["윤시후","정지후"]}],"threeleg":["윤시은","홍효주","조아윤","최담은","이나경","유래이","배지유","황애현","김란희","강보민","이예지","나효린"],"rope8":["강태현","윤시후","김민석","양하준","이여명","허준혁","김란희","XUJINGHONG","배서연","박해성"],"relay":{"여":["나효린","이예지","황애현"],"남":["강태현","채희율","허준혁"]},"wholeClass":["판뒤집기","줄다리기"]},"3-2":{"futsal":["황선후","김익","원호연","안지훈","이준우","김규민","유소연","박지민","송윤서"],"candidates":[],"badminton":[{"court":"A코트","pair":["정진아","김민지"]},{"court":"B코트","pair":["김민서","유예림"]},{"court":"C코트","pair":["박서현","김서연"]},{"court":"D코트","pair":["정연주","빈지수"]},{"court":"E코트","pair":["홍성훈","반서진"]}],"threeleg":["이준우","홍성훈","김규민","황선후","안지훈","원호연","정진아","정률희","유소연","박지민","유예림","박서현"],"rope8":["송윤서","김민서","김익","김효은","반서진","김서연","김민지","정연주","빈지수","황규빈"],"relay":{"여":["박서현","정진아","유예림"],"남":["홍성훈","김규민","이준우"]},"wholeClass":["판뒤집기","줄다리기"]},"3-3":{"futsal":["김건민","양석현","임경진","김연재","허건영","정민찬","박준서","강시후","김은조"],"candidates":[],"badminton":[{"court":"A코트","pair":["최지유","김혜림"]},{"court":"B코트","pair":["나연흠","연서현"]},{"court":"C코트","pair":["김지율","이시현"]},{"court":"D코트","pair":["이희진","연시윤"]},{"court":"E코트","pair":["연시윤","ERDENEBAYAROCHIRBAT"]}],"threeleg":["연서현","배서윤","강시후","허건영","박준서","김건민","나연흠","ERDENEBAYAROCHIRBAT","양석현","윤시윤","김연재","정민찬"],"rope8":["강한별","윤채원","이윤서","연시윤","김채령","배솔아","김지율","최지유","이희진","박소율"],"relay":{"여":["이시현","최지유","나연흠"],"남":["박준서","윤시윤","허건영"]},"wholeClass":["판뒤집기","줄다리기"]},"3-4":{"futsal":["신명윤","권도엽","박정현","홍성효","이우진","민지환","박성준","이선민"],"candidates":[],"badminton":[{"court":"A코트","pair":["서지우","임서인"]},{"court":"B코트","pair":["고가람","이예서"]},{"court":"C코트","pair":["김보민","권민서"]},{"court":"D코트","pair":["이다은","김가은"]},{"court":"E코트","pair":["김준혁","신지환"]}],"threeleg":["신명윤","홍성효","이선민","김가은","권민서","박규리","김혜림","임서인","윤희","김민지","김지언","김경은"],"rope8":["박성준","김보민","고가람","이예서","신지환","이우진","박정현","권도엽","김다은","박현정"],"relay":{"여":["박규리","서지우","김경은"],"남":["신명윤","박시율","이선민"]},"wholeClass":["판뒤집기","줄다리기"]},"3-5":{"futsal":["배예준","최명훈","송지우","이강우","남정원","남준혁","채영빈","윤관","김남규"],"candidates":[],"badminton":[{"court":"A코트","pair":["황유희","박지은"]},{"court":"B코트","pair":["강수민","권하음"]},{"court":"C코트","pair":["김세아","염민정"]},{"court":"D코트","pair":["한민지","예지은"]},{"court":"E코트","pair":["이영호","김도원"]}],"threeleg":["박지은","황유희","정하음","권하음","채영빈","예지은","김규림","김도원","이영호","최명훈","남정원","배예준"],"rope8":["이정민","이주하","빈지우","홍성민","염민정","남준혁","송지우","이강우","김남규","박채원"],"relay":{"여":["강수민","김세아","한민지"],"남":["최명훈","배예준","남정원"]},"wholeClass":["판뒤집기","줄다리기"]},"3-6":{"futsal":["강나율","박주한","손태양","신동준","오원영","위예슬","이강훈","이태준","정상훈"],"candidates":[],"badminton":[{"court":"A코트","pair":["이채연","황세연"]},{"court":"B코트","pair":["박민영","최지원"]},{"court":"C코트","pair":["이정서","최정인"]},{"court":"D코트","pair":["양희","이승아"]},{"court":"E코트","pair":["권민준","전현재"]}],"threeleg":["박민영","박주한","손태양","신동준","오원영","유재범","이가영","이강훈","이채연","최지원","황세연","황예윤"],"rope8":["강나율","변예린","여은솔","이서현","이승아","이연주","이정서","전현재","정상훈","최정인"],"relay":{"여":["여은솔","이승아","이정서"],"남":["손태양","신동준","유재범"]},"wholeClass":["판뒤집기","줄다리기"]},"3-7":{"futsal":["김연재","김지원","배민성","송태윤","BATZORIGENKHDUL","이선우","이하진","정진우","최준규"],"candidates":[],"badminton":[{"court":"A코트","pair":["민승원","유수민"]},{"court":"B코트","pair":["강윤지","박다인"]},{"court":"C코트","pair":["김빛나","최은률"]},{"court":"D코트","pair":["이윤서","양가은"]},{"court":"E코트","pair":["박재환","오권준"]}],"threeleg":["김연재","김지원","BATZORIGENKHDUL","김고은","유다현","이윤서","이윤지","홍예진","양가은","유수민","이도희","민승원"],"rope8":["이선우","박재환","정진우","이하진","강윤지","배민성","박시연","최준규","주혜원","최은률"],"relay":{"여":["이도희","양가은","박다인"],"남":["BATZORIGENKHDUL","김연재","정진우"]},"wholeClass":["판뒤집기","줄다리기"]}};
+const OFFICIAL_PLAYERS={"1-1":{"futsal":["김민서","김시윤","문신우","박민성","반경환","이동연","이서협","장민혁","최준서"],"candidates":["김시윤","박민성"],"badminton":[{"court":"A코트","pair":["정윤서","정아리"]},{"court":"B코트","pair":["최연재","박시연"]},{"court":"C코트","pair":["신재인","강지윤"]},{"court":"D코트","pair":["유예지","김규린"]},{"court":"E코트","pair":["박진현","유태욱"]}],"threeleg":["강지윤","신재인","김세인","정예원","정윤서","최연재","박민성","김건율","이동연","이서협","김민서","반경환"],"rope8":["오승현","김시윤","김규린","정아리","박시연","박진현","유예지","유태욱","장민혁","최준서"],"relay":{"여":["박시연","최연재","정아리"],"남":["김민서","이서협","반경환"]},"wholeClass":["판뒤집기","줄다리기"]},"1-2":{"futsal":["김도윤","송승현","신승우","원호준","위승헌","윤주산","최수현","전두솔","정한결"],"candidates":[],"badminton":[{"court":"A코트","pair":["김채희","김태희"]},{"court":"B코트","pair":["김한나","배예현"]},{"court":"C코트","pair":["박예원","정하은"]},{"court":"D코트","pair":["최윤서","추진주"]},{"court":"E코트","pair":["이민준","이승우"]}],"threeleg":["김도현","김윤성","김채희","김태희","박예원","배예현","이민준","이승우","정한결","최수현","최윤서","추진주"],"rope8":["김도윤","김한나","노하윤","원호준","송승현","신승우","위승헌","윤주산","전두솔","정하은"],"relay":{"여":["최윤서","김한나","노하윤"],"남":["윤주산","정한결","김윤성"]},"wholeClass":["판뒤집기","줄다리기"]},"1-3":{"futsal":["김근후","신영준","이윤후","이준우","전승현","정인재","조성진","조용훈","한수용"],"candidates":[],"badminton":[{"court":"A코트","pair":["김민서","신지수"]},{"court":"B코트","pair":["김시온","양채연"]},{"court":"C코트","pair":["박채율","이승주"]},{"court":"D코트","pair":["전지은","정서윤"]},{"court":"E코트","pair":["김민찬","박시환"]}],"threeleg":["김민찬","석정제","양채연","이재이","전승현","전지은","정서윤","정인재","조성진","조용훈","조이건","한수용"],"rope8":["김근후","김민서","김시온","박시환","박채율","신영준","신지수","이승주","이윤후","이준우"],"relay":{"여":["김민서","신지수","이승주"],"남":["신영준","이윤후","이준우"]},"wholeClass":["판뒤집기","줄다리기"]},"1-4":{"futsal":["김시우","김준호","김태윤","성민준","이윤성","채지후","홍서진","김주용","박태훈"],"candidates":[],"badminton":[{"court":"A코트","pair":["김시은","윤하윤"]},{"court":"B코트","pair":["문소민","TUGULDUR EGSHIGLEN"]},{"court":"C코트","pair":["유나은","이소민"]},{"court":"D코트","pair":["권수빈","이지아"]},{"court":"E코트","pair":["신재현","정운호"]}],"threeleg":["김시은","김주용","문소민","성민준","유영주","윤하윤","이소민","이윤성","정운호","정주영","채지후","홍서진"],"rope8":["권수빈","김시우","김준호","김태윤","김주용","박태훈","유나은","이지아","신재현","TUGULDUR EGSHIGLEN"],"relay":{"여":["권수빈","김시은","이소민"],"남":["성민준","채지후","홍서진"]},"wholeClass":["판뒤집기","줄다리기"]},"1-5":{"futsal":["김민창","박윤세","정승하","전서윤","서지석","김지한","김민준","박재완","김태윤"],"candidates":["박재완","김태윤"],"badminton":[{"court":"A코트","pair":["노예린","이수정"]},{"court":"B코트","pair":["류지율","전재인"]},{"court":"C코트","pair":["김도은","문희윤"]},{"court":"D코트","pair":["민세영","임수빈"]},{"court":"E코트","pair":["허준서","황유현"]}],"threeleg":["민세영","임수빈","서휘영","이찬율","황유현","김도은","정승하","류지율","전재인","허준서","이수정","김민창"],"rope8":["최윤설","노예린","김태윤","김지한","전서윤","박재완","김민준","박윤세","서지석","문희윤"],"relay":{"여":["이수정","류지율","전재인"],"남":["박윤세","서지석","허준서"]},"wholeClass":["판뒤집기","줄다리기"]},"2-1":{"futsal":["이성민","마서준","임지율","이현서","김륜호","전이준","오성준","한태성","박연우"],"candidates":[],"badminton":[{"court":"A코트","pair":["신은율","김다은"]},{"court":"B코트","pair":["DORJNAMJIM ANU-UJIN","김예원"]},{"court":"C코트","pair":["이선효","이아윤"]},{"court":"D코트","pair":["이유진","노유진"]},{"court":"E코트","pair":["김도균","성시환"]}],"threeleg":["DORJNAMJIM ANU-UJIN","이시언","조윤아","김지우","이선효","장예린","오성준","최은소","한태성","신유환","공도현","박연우"],"rope8":["신은율","김예원","이성민","마서준","김다은","전이준","성시환","임지율","이현서","김도균"],"relay":{"여":["DORJNAMJIM ANU-UJIN","이시언","김다은"],"남":["김륜호","임지율","전이준"]},"wholeClass":["판뒤집기","줄다리기"]},"2-2":{"futsal":["정은찬","허은혁","김동민","김승헌","최유준","김응철","김지오","최마루","반서윤"],"candidates":["최마루","반서윤"],"badminton":[{"court":"A코트","pair":["김태은","김은서"]},{"court":"B코트","pair":["김예슬","곽한이"]},{"court":"C코트","pair":["천하림","양다은"]},{"court":"D코트","pair":["조아란","박제은"]},{"court":"E코트","pair":["임현석","전충헌"]}],"threeleg":["김도윤","임현석","전충헌","이희서","김예슬","김은서","천예원","김예빈","이승환","김도하","김동민","최마루"],"rope8":["김승헌","양다은","송소율","김응철","반서윤","김지환","김지오","정다운","김태은","최유준"],"relay":{"여":["박제은","김예슬","이희서"],"남":["김동민","김도하","김승헌"]},"wholeClass":["판뒤집기","줄다리기"]},"2-3":{"futsal":["김찬우","박서준","변은성","이강우","이창영","전태우","전태인","정시우","최장혁"],"candidates":[],"badminton":[{"court":"A코트","pair":["박혜미","배서인"]},{"court":"B코트","pair":["채서연","여수영"]},{"court":"C코트","pair":["이다윤","정예림"]},{"court":"D코트","pair":["김도윤","이지유"]},{"court":"E코트","pair":["김범준","윤태산"]}],"threeleg":["이윤서","이희은","정예림","김휘건","오승찬","오지후","이건무","이창영","전태우","박혜미","배서인","오채영"],"rope8":["김강민","여수영","채서연","이다윤","이지유","정다연","박서준","김찬우","이강우","최장혁"],"relay":{"여":["여수영","이윤서","정예림"],"남":["김찬우","이창영","정시우"]},"wholeClass":["판뒤집기","줄다리기"]},"2-4":{"futsal":["신서준","김영민","남기용","김민성","김주호","김민석","이우빈","김동욱","이재훈"],"candidates":[],"badminton":[{"court":"A코트","pair":["정세윤","김선"]},{"court":"B코트","pair":["김인정","강서우"]},{"court":"C코트","pair":["곽강이","박서진"]},{"court":"D코트","pair":["김예빈","신아람"]},{"court":"E코트","pair":["정유현","김태율"]}],"threeleg":["한승범","김민성","이우빈","정유현","이희찬","이재훈","박산아","김선","김혜빈","유혜진","강서우","김인정"],"rope8":["김동욱","김주호","김기현","박시현","김민석","곽찬송","신아람","김태율","남기용","손준혁"],"relay":{"여":["신아람","강서우","김혜빈"],"남":["김주호","남기용","정유현"]},"wholeClass":["판뒤집기","줄다리기"]},"2-5":{"futsal":["ODGEREL SOYOMBO","송효준","안지성","연정모","이승준","임규민","채준영","윤서진","이유찬"],"candidates":["윤서진","이유찬"],"badminton":[{"court":"A코트","pair":["천소망","김하윤"]},{"court":"B코트","pair":["고은영","박하음"]},{"court":"C코트","pair":["권민서","윤정해"]},{"court":"D코트","pair":["김민지","김나현"]},{"court":"E코트","pair":["최세현","최규"]}],"threeleg":["강주하","박태연","허아정","권민서","안혜원","윤정해","ODGEREL SOYOMBO","안지성","임규민","윤병준","임종현","한정민"],"rope8":["김민지","김명준","연정모","윤서진","이유찬","김하윤","이휘건","채준영","최규","최세현"],"relay":{"여":["천소망","고은영","박하음"],"남":["ODGEREL SOYOMBO","이승준","임규민"]},"wholeClass":["판뒤집기","줄다리기"]},"2-6":{"futsal":["김민건","남우현","박재현","신태윤","이라결","이영찬","이재호","최성빈","한서준"],"candidates":[],"badminton":[{"court":"A코트","pair":["김규리","이나린"]},{"court":"B코트","pair":["송주영","최윤진"]},{"court":"C코트","pair":["김지현","송지율"]},{"court":"D코트","pair":["이유하","최지우"]},{"court":"E코트","pair":["이재용","조현빈"]}],"threeleg":["이라결","이재용","이재호","남하랑","조현빈","최성빈","김민준","남우현","한서준","김규리","이유하","최지우"],"rope8":["김민건","박소윤","박재현","송지율","신태윤","이영찬","이재신","임은수","정재아","최윤진"],"relay":{"여":["송지율","이유하","최윤진"],"남":["김민준","남우현","신태윤"]},"wholeClass":["판뒤집기","줄다리기"]},"3-1":{"futsal":["강태현","김민석","채희율","박해성","이여명","XUJINGHONG","허준혁","양하준","정소영"],"candidates":[],"badminton":[{"court":"A코트","pair":["나효린","이예지"]},{"court":"B코트","pair":["최담은","황애현"]},{"court":"C코트","pair":["배서연","이나경"]},{"court":"D코트","pair":["배지유","김란희"]},{"court":"E코트","pair":["윤시후","정지후"]}],"threeleg":["윤시은","홍효주","조아윤","최담은","이나경","유래이","배지유","황애현","김란희","강보민","이예지","나효린"],"rope8":["강태현","윤시후","김민석","양하준","이여명","허준혁","김란희","XUJINGHONG","배서연","박해성"],"relay":{"여":["나효린","이예지","황애현"],"남":["강태현","채희율","허준혁"]},"wholeClass":["판뒤집기","줄다리기"]},"3-2":{"futsal":["황선후","김익","원호연","안지훈","이준우","김규민","유소연","박지민","송윤서"],"candidates":[],"badminton":[{"court":"A코트","pair":["정진아","김민지"]},{"court":"B코트","pair":["김민서","유예림"]},{"court":"C코트","pair":["박서현","김서연"]},{"court":"D코트","pair":["정연주","빈지수"]},{"court":"E코트","pair":["원호연","반서진"]}],"threeleg":["이준우","김익","김규민","황선후","안지훈","원호연","정지윤","정지인","이다민","박지민","유예림","박서현"],"rope8":["송윤서","김민서","정률희","김효은","반서진","김서연","김민지","정연주","빈지수","황규빈"],"relay":{"여":["박서현","정진아","유예림"],"남":["신동학","김규민","이준우"]},"wholeClass":["판뒤집기","줄다리기"]},"3-3":{"futsal":["김건민","양석현","임경진","김연재","허건영","정민찬","박준서","강시후","김은조"],"candidates":[],"badminton":[{"court":"A코트","pair":["최지유","김혜림"]},{"court":"B코트","pair":["나연흠","연서현"]},{"court":"C코트","pair":["김지율","이시현"]},{"court":"D코트","pair":["이희진","연시윤"]},{"court":"E코트","pair":["연시윤","ERDENEBAYAROCHIRBAT"]}],"threeleg":["연서현","배서윤","강시후","허건영","박준서","김건민","나연흠","ERDENEBAYAROCHIRBAT","양석현","윤시윤","김연재","정민찬"],"rope8":["강한별","윤채원","이윤서","연시윤","김채령","배솔아","김지율","최지유","이희진","박소율"],"relay":{"여":["이시현","최지유","나연흠"],"남":["박준서","윤시윤","허건영"]},"wholeClass":["판뒤집기","줄다리기"]},"3-4":{"futsal":["신명윤","권도엽","박정현","홍성효","이우진","민지환","박성준","이선민"],"candidates":[],"badminton":[{"court":"A코트","pair":["서지우","임서인"]},{"court":"B코트","pair":["고가람","이예서"]},{"court":"C코트","pair":["김보민","권민서"]},{"court":"D코트","pair":["이다은","김가은"]},{"court":"E코트","pair":["김준혁","신지환"]}],"threeleg":["신명윤","홍성효","이선민","김가은","권민서","박규리","김혜림","임서인","윤희","김민지","김지언","김경은"],"rope8":["박성준","김보민","고가람","이예서","신지환","이우진","박정현","권도엽","김다은","박현정"],"relay":{"여":["박규리","서지우","김경은"],"남":["신명윤","박시율","이선민"]},"wholeClass":["판뒤집기","줄다리기"]},"3-5":{"futsal":["배예준","최명훈","송지우","이강우","남정원","남준혁","채영빈","윤관","김남규"],"candidates":[],"badminton":[{"court":"A코트","pair":["황유희","박지은"]},{"court":"B코트","pair":["강수민","권하음"]},{"court":"C코트","pair":["김세아","염민정"]},{"court":"D코트","pair":["한민지","예지은"]},{"court":"E코트","pair":["이영호","김도원"]}],"threeleg":["박지은","황유희","정하음","권하음","채영빈","예지은","김규림","김도원","이영호","최명훈","남정원","배예준"],"rope8":["이정민","이주하","빈지우","홍성민","염민정","남준혁","송지우","이강우","김남규","박채원"],"relay":{"여":["강수민","김세아","한민지"],"남":["최명훈","배예준","남정원"]},"wholeClass":["판뒤집기","줄다리기"]},"3-6":{"futsal":["강나율","박주한","손태양","신동준","오원영","위예슬","이강훈","이태준","정상훈"],"candidates":[],"badminton":[{"court":"A코트","pair":["이채연","황세연"]},{"court":"B코트","pair":["박민영","최지원"]},{"court":"C코트","pair":["이정서","최정인"]},{"court":"D코트","pair":["양희","이승아"]},{"court":"E코트","pair":["권민준","전현재"]}],"threeleg":["박민영","박주한","손태양","신동준","오원영","유재범","이가영","이강훈","이채연","최지원","황세연","황예윤"],"rope8":["강나율","변예린","여은솔","이서현","이승아","이연주","이정서","전현재","정상훈","최정인"],"relay":{"여":["여은솔","이승아","이정서"],"남":["손태양","신동준","유재범"]},"wholeClass":["판뒤집기","줄다리기"]},"3-7":{"futsal":["김연재","김지원","배민성","송태윤","BATZORIGENKHDUL","이선우","이하진","정진우","최준규"],"candidates":[],"badminton":[{"court":"A코트","pair":["민승원","유수민"]},{"court":"B코트","pair":["강윤지","박다인"]},{"court":"C코트","pair":["김빛나","최은률"]},{"court":"D코트","pair":["이윤서","양가은"]},{"court":"E코트","pair":["박재환","오권준"]}],"threeleg":["김연재","김지원","BATZORIGENKHDUL","김고은","유다현","이윤서","이윤지","홍예진","양가은","유수민","이도희","민승원"],"rope8":["이선우","박재환","정진우","이하진","강윤지","배민성","박시연","최준규","주혜원","최은률"],"relay":{"여":["이도희","양가은","박다인"],"남":["BATZORIGENKHDUL","김연재","정진우"]},"wholeClass":["판뒤집기","줄다리기"]}};
 const UNRESOLVED_PARTICIPANTS={"1-2":["추진주"]};
 
 function normalizeStudentName(s){
@@ -589,6 +947,63 @@ function syncStudentName(){
   const student=(OFFICIAL_ROSTER[key]||[]).find(s=>Number(s.no)===no);
   const nameInput=document.getElementById('studentName');
   if(nameInput && student) nameInput.value=student.name;
+}
+
+
+const CLASS_APPLICATION_FILES={"1-1":"class_applications/1-1.hwp","1-2":"class_applications/1-2.hwp","1-3":"class_applications/1-3.hwp","1-4":"class_applications/1-4.hwp","1-5":"class_applications/1-5.hwp","2-1":"class_applications/2-1.hwp","2-2":"class_applications/2-2.hwp","2-3":"class_applications/2-3.hwp","2-4":"class_applications/2-4.hwp","2-5":"class_applications/2-5.hwp","2-6":"class_applications/2-6.hwp","3-1":"class_applications/3-1.hwp","3-2":"class_applications/3-2.hwp","3-3":"class_applications/3-3.hwp","3-4":"class_applications/3-4.hwp","3-5":"class_applications/3-5.hwp","3-6":"class_applications/3-6.hwp","3-7":"class_applications/3-7.hwp"};
+const CLASS_APPLICATION_DISPLAY_ALIASES={"1-1":{"장민혁":"장문혁"},"1-4":{"TUGULDUR EGSHIGLEN":"엑시그렌"},"2-1":{"DORJNAMJIM ANU-UJIN":"아노우진"},"2-5":{"ODGEREL SOYOMBO":"서염버"},"3-1":{"XUJINGHONG":"허경홍"},"3-3":{"ERDENEBAYAROCHIRBAT":"어츨바트"},"3-7":{"BATZORIGENKHDUL":"엥크들","주혜원":"주헤원"}};
+
+function classDisplayName(key,name){
+  return (CLASS_APPLICATION_DISPLAY_ALIASES[key]||{})[name]||name;
+}
+function updateClassSheetClassOptions(){
+  const g=Number(document.getElementById('classSheetGrade').value||1);
+  const max=g===1?5:(g===2?6:7);
+  const sel=document.getElementById('classSheetClass');
+  sel.innerHTML='';
+  for(let c=1;c<=max;c++) sel.add(new Option(c+'반',String(c)));
+}
+function namesHtml(key,arr){
+  return (arr||[]).map(x=>'<span class="chip">'+escapeHtml(classDisplayName(key,x))+'</span>').join(' ');
+}
+function showClassApplication(){
+  const g=document.getElementById('classSheetGrade').value;
+  const c=document.getElementById('classSheetClass').value;
+  const key=g+'-'+c, d=OFFICIAL_PLAYERS[key], out=document.getElementById('classApplicationResult');
+  if(!d){ out.innerHTML='해당 학급의 참가신청서 자료가 없습니다.'; return; }
+  const bm=(d.badminton||[]).map(x=>`<tr><td>${escapeHtml(x.court)}</td><td>${escapeHtml(classDisplayName(key,x.pair[0]))}</td><td>${escapeHtml(classDisplayName(key,x.pair[1]))}</td></tr>`).join('');
+  const cand=(d.candidates||[]).length?`<div class="small" style="margin-top:6px"><b>후보:</b> ${namesHtml(key,d.candidates)}</div>`:'';
+  const file=CLASS_APPLICATION_FILES[key];
+  out.innerHTML=`
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+      <div><b style="font-size:1.2rem">${g}학년 ${c}반 체육한마당 참가신청서</b><div class="small">최종 제출본 기준</div></div>
+      <a class="btn" href="${file}" target="_blank" rel="noopener">원본 HWP 열기</a>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th style="width:120px">종목</th><th>참가학생 명단</th><th style="width:150px">비고</th></tr></thead>
+      <tbody>
+        <tr><td><b>풋살</b></td><td>${namesHtml(key,d.futsal)}${cand}</td><td>주전 7명, 후보 포함 최대 9명</td></tr>
+        <tr><td><b>배드민턴</b></td><td colspan="2">
+          <div class="tablewrap"><table><thead><tr><th>코트</th><th>1번</th><th>2번</th></tr></thead><tbody>${bm}</tbody></table></div>
+          <div class="small" style="margin-top:6px">파트너, 코트배정 변경불가</div>
+        </td></tr>
+        <tr><td><b>판뒤집기</b></td><td>학급 전체</td><td>학급 전체</td></tr>
+        <tr><td><b>3인4각 이어달리기</b></td><td>${namesHtml(key,d.threeleg)}</td><td>12명</td></tr>
+        <tr><td><b>줄다리기</b></td><td>학급 전체</td><td>학급 전체</td></tr>
+        <tr><td><b>8자줄넘기</b></td><td>${namesHtml(key,d.rope8)}</td><td>10명</td></tr>
+        <tr><td><b>계주</b></td><td><b>여학생</b> ${namesHtml(key,d.relay?.여||[])}<br><b>남학생</b> ${namesHtml(key,d.relay?.남||[])}</td><td>남 3명, 여 3명</td></tr>
+      </tbody>
+    </table></div>
+    <div class="secure-box" style="margin-top:14px;text-align:left">
+      <b>참가 유의사항</b><br>
+      ① 풋살/배드민턴, 3인4각/8자줄넘기는 각각 중복 참가 불가<br>
+      ② 부정 선수 발견 시 해당 종목 실격패 및 0점 처리<br>
+      ③ 비신사적행위 발견 시 해당 경기 0점 처리<br>
+      ④ 경기 시간에 늦을 경우 참가 불가<br>
+      ⑤ 학교 규정에 맞는 체육복, 운동화 및 학급별 단체복 착용<br>
+      ⑥ 경기 전후 준비운동과 정리운동 실시<br>
+      ⑦ 참가선수는 주의의무를 다하여 안전사고 예방
+    </div>`;
 }
 
 function participantInfoForName(key,name){
@@ -658,7 +1073,7 @@ function findPlayer(){
 }
 
 function saveBracket(){alert('확정 대진표가 반영되어 있습니다.')} function renderBracket(){renderOfficialBracket();}
-function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
 const OFFICIAL_BRACKETS={"1": {"풋살": [["1경기", "1반 vs 4반"], ["2경기", "2반 vs 5반"], ["3경기", "2경기 승자 vs 3반"], ["4경기", "1경기 승자 vs 3경기 승자"]], "배드민턴": [["예선 1", "2반 vs 4반"], ["본선 1", "1반 vs 예선 1 승자"], ["본선 2", "5반 vs 3반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "판뒤집기": [["예선 1", "3반 vs 4반"], ["본선 1", "2반 vs 예선 1 승자"], ["본선 2", "5반 vs 1반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "줄다리기": [["예선 1", "3반 vs 4반"], ["본선 1", "2반 vs 예선 1 승자"], ["본선 2", "1반 vs 5반"], ["결승", "본선 1 승자 vs 본선 2 승자"]]}, "2": {"풋살": [["예선 1", "3반 vs 4반"], ["예선 2", "5반 vs 2반"], ["본선 1", "예선 1 승자 vs 6반"], ["본선 2", "예선 2 승자 vs 1반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "배드민턴": [["예선 1", "3반 vs 4반"], ["예선 2", "6반 vs 1반"], ["본선 1", "예선 1 승자 vs 2반"], ["본선 2", "예선 2 승자 vs 5반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "판뒤집기": [["예선 1", "6반 vs 4반"], ["예선 2", "3반 vs 5반"], ["본선 1", "예선 1 승자 vs 1반"], ["본선 2", "예선 2 승자 vs 2반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "줄다리기": [["예선 1", "4반 vs 6반"], ["예선 2", "1반 vs 2반"], ["본선 1", "예선 1 승자 vs 3반"], ["본선 2", "예선 2 승자 vs 5반"], ["결승", "본선 1 승자 vs 본선 2 승자"]]}, "3": {"풋살": [["예선 1", "6반 vs 3반"], ["예선 2", "5반 vs 7반"], ["예선 3", "4반 vs 1반"], ["본선 1", "예선 1 승자 vs 예선 2 승자"], ["본선 2", "예선 3 승자 vs 2반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "배드민턴": [["예선 1", "6반 vs 1반"], ["예선 2", "3반 vs 5반"], ["예선 3", "2반 vs 4반"], ["본선 1", "예선 1 승자 vs 예선 2 승자"], ["본선 2", "예선 3 승자 vs 7반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "판뒤집기": [["예선 1", "2반 vs 6반"], ["예선 2", "7반 vs 1반"], ["예선 3", "3반 vs 4반"], ["본선 1", "예선 1 승자 vs 예선 2 승자"], ["본선 2", "예선 3 승자 vs 5반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "줄다리기": [["예선 1", "7반 vs 4반"], ["예선 2", "5반 vs 3반"], ["예선 3", "6반 vs 1반"], ["본선 1", "예선 1 승자 vs 예선 2 승자"], ["본선 2", "예선 3 승자 vs 2반"], ["결승", "본선 1 승자 vs 본선 2 승자"]], "계주": [["예선 1조", "2반 · 4반 · 6반"], ["예선 2조", "1반 · 3반 · 5반 · 7반"], ["결승", "예선 통과 학급"]]}};
 function renderOfficialBracket(){const root=document.getElementById('officialBracket');if(!root)return;
@@ -730,8 +1145,7 @@ async function testCloudConfig(){const u=(localStorage.getItem('sportsday_supaba
 
 function exportData(){let data={scores:ls('sportsday_scores',{}),notices:ls('sportsday_notices',[]),players:ls('sportsday_players',[]),bracket:ls('sportsday_bracket',''),current:ls('sportsday_current',''),entranceVotes:ls('sportsday_entrance_votes',[])};let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sportsday-data.json';a.click();URL.revokeObjectURL(a.href)}
 function clearAll(){if(confirm('이 웹앱에서 저장한 모든 데이터를 삭제할까요?')){Object.keys(localStorage).filter(k=>k.startsWith('sportsday_')).forEach(k=>localStorage.removeItem(k));location.reload()}}
-renderOfficialBracket();
-updateStudentClassOptions();
+updateStudentClassOptions(); updateClassSheetClassOptions();
 init();
 </script>
 
