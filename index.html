@@ -973,11 +973,10 @@ function showClassApplication(){
   if(!d){ out.innerHTML='해당 학급의 참가신청서 자료가 없습니다.'; return; }
   const bm=(d.badminton||[]).map(x=>`<tr><td>${esc(x.court)}</td><td>${esc(classDisplayName(key,x.pair[0]))}</td><td>${esc(classDisplayName(key,x.pair[1]))}</td></tr>`).join('');
   const cand=(d.candidates||[]).length?`<div class="small" style="margin-top:6px"><b>후보:</b> ${namesHtml(key,d.candidates)}</div>`:'';
-  const file=CLASS_APPLICATION_FILES[key];
   out.innerHTML=`
     <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
       <div><b style="font-size:1.2rem">${g}학년 ${c}반 체육한마당 참가신청서</b><div class="small">최종 제출본 기준</div></div>
-      <a class="btn" href="${file}" target="_blank" rel="noopener">원본 HWP 열기</a>
+      <span class="badge">웹페이지에서 바로 조회</span>
     </div>
     <div class="tablewrap"><table>
       <thead><tr><th style="width:120px">종목</th><th>참가학생 명단</th><th style="width:150px">비고</th></tr></thead>
