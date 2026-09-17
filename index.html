@@ -964,7 +964,7 @@ function updateClassSheetClassOptions(){
   for(let c=1;c<=max;c++) sel.add(new Option(c+'반',String(c)));
 }
 function namesHtml(key,arr){
-  return (arr||[]).map(x=>'<span class="chip">'+escapeHtml(classDisplayName(key,x))+'</span>').join(' ');
+  return (arr||[]).map(x=>escapeHtml(classDisplayName(key,x))).join(' · ');
 }
 function showClassApplication(){
   const g=document.getElementById('classSheetGrade').value;
