@@ -964,14 +964,14 @@ function updateClassSheetClassOptions(){
   for(let c=1;c<=max;c++) sel.add(new Option(c+'반',String(c)));
 }
 function namesHtml(key,arr){
-  return (arr||[]).map(x=>'<span class="chip">'+esc(classDisplayName(key,x))+'</span>').join(' ');
+  return (arr||[]).map(x=>'<span class="chip">'+escapeHtml(classDisplayName(key,x))+'</span>').join(' ');
 }
 function showClassApplication(){
   const g=document.getElementById('classSheetGrade').value;
   const c=document.getElementById('classSheetClass').value;
   const key=g+'-'+c, d=OFFICIAL_PLAYERS[key], out=document.getElementById('classApplicationResult');
   if(!d){ out.innerHTML='해당 학급의 참가신청서 자료가 없습니다.'; return; }
-  const bm=(d.badminton||[]).map(x=>`<tr><td>${esc(x.court)}</td><td>${esc(classDisplayName(key,x.pair[0]))}</td><td>${esc(classDisplayName(key,x.pair[1]))}</td></tr>`).join('');
+  const bm=(d.badminton||[]).map(x=>`<tr><td>${escapeHtml(x.court)}</td><td>${escapeHtml(classDisplayName(key,x.pair[0]))}</td><td>${escapeHtml(classDisplayName(key,x.pair[1]))}</td></tr>`).join('');
   const cand=(d.candidates||[]).length?`<div class="small" style="margin-top:6px"><b>후보:</b> ${namesHtml(key,d.candidates)}</div>`:'';
   out.innerHTML=`
     <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
