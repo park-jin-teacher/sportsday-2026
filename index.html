@@ -851,6 +851,28 @@ try {
   </div>
 </section>
 <script>
+
+async function saveIntegratedEventScore(){
+  const pw=window.__sportsdayAdminPassword || (typeof adminPassword!=='undefined'?adminPassword:'') || '';
+  const g=Number(document.getElementById('integratedGrade').value);
+  const sport=document.getElementById('integratedSport').value;
+  const cls=document.getElementById('integratedClass').value.trim();
+  const score=Number(document.getElementById('integratedScore').value);
+  if(!pw){alert('관리자 로그인 후 입력해 주세요.');return;}
+  if(!cls || Number.isNaN(score)){alert('반과 점수를 입력해 주세요.');return;}
+  try{
+    const r=await publicSbFetch('/rest/v1/rpc/admin_set_event_score',{
+      method:'POST',
+      body:JSON.stringify({p_password:pw,p_grade:g,p_sport:sport,p_class_no:cls,p_score:score})
+    });
+    if(!r?.ok) throw new Error(r?.message||'저장 실패');
+    const st=document.getElementById('integratedScoreStatus');
+    if(st) st.innerHTML=`✓ ${g}학년 ${cls}반 ${sport} ${score}점 저장 완료 · 종합 ${r.total}점`;
+    if(typeof refreshAdminScores==='function') await refreshAdminScores();
+    if(window.refreshSportsdayPublicState) await window.refreshSportsdayPublicState();
+    alert(`${g}학년 ${cls}반 ${sport} ${score}점이 저장되었고 실시간 총점에 반영되었습니다.`);
+  }catch(e){alert('종목별 점수 저장 오류: '+e.message);}
+}
 function opsTab(which,btn){
  document.querySelectorAll('.ops-tab').forEach(x=>x.classList.remove('active'));
  document.querySelectorAll('.ops-pane').forEach(x=>x.classList.remove('active'));
@@ -1342,6 +1364,26 @@ init();
             <input id="scoreClass" placeholder="예: 1">
             <label style="display:block;margin-top:8px">총점</label>
             <input id="scoreValue" type="number" placeholder="예: 450">
+            <div style="margin-top:16px;padding-top:14px;border-top:1px solid #e5e7eb">
+              <h4 style="margin:0 0 6px">종목별 점수 입력</h4>
+              <p class="admin-note">종목별 점수를 입력하면 해당 반의 종합점수를 자동 합산하여 실시간 점수 탭에 반영합니다.</p>
+              <label>학년</label>
+              <select id="integratedGrade"><option>1</option><option>2</option><option>3</option></select>
+              <label style="display:block;margin-top:8px">종목</label>
+              <select id="integratedSport">
+                <option>풋살</option><option>배드민턴</option><option>판뒤집기</option><option>줄다리기</option>
+                <option>3인4각</option><option>8자줄넘기</option><option>계주</option>
+              </select>
+              <label style="display:block;margin-top:8px">반</label>
+              <input id="integratedClass" placeholder="예: 4">
+              <label style="display:block;margin-top:8px">해당 종목 점수</label>
+              <input id="integratedScore" type="number" min="0" placeholder="예: 100">
+              <div class="admin-actions">
+                <button class="admin-primary" type="button" onclick="saveIntegratedEventScore()">종목별 점수 저장 → 실시간 반영</button>
+              </div>
+              <div id="integratedScoreStatus" class="admin-note"></div>
+            </div>
+
             <div class="admin-actions">
               <button class="admin-primary" id="scoreSaveBtn">저장 / 수정</button>
               <button class="admin-secondary" id="scoreListRefreshBtn" type="button">현재 점수 새로고침</button>
@@ -1476,7 +1518,7 @@ init();
       if(!configured){
         const r=await rpc('admin_bootstrap',{p_password:pw});
         if(!r?.ok){msg.textContent=r?.message||'최초 설정에 실패했습니다.';return;}
-        adminPassword=pw; window.__sportsdayAdminPassword=pw; showPanel(); return;
+        adminPassword=pw; window.__sportsdayAdminPassword=pw; window.__sportsdayAdminPassword=pw; showPanel(); return;
       }
       const ok=await rpc('admin_verify',{p_password:pw});
       if(ok){adminPassword=pw;showPanel();}
