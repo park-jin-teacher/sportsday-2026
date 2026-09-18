@@ -325,7 +325,8 @@ try {
 
 <section id="scores" class="section">
   <div class="sectionhead"><div><h2>🏆 실시간 점수</h2><p>관리자 입력값을 기준으로 학년별 종합점수를 자동 계산</p></div><span class="badge">LOCAL DEMO</span></div>
-  <div class="tabs" id="gradeTabs"></div>
+  <div class="card full" style="margin:0 0 12px"><h3>🔴 서버 실시간 종목별 점수</h3><div id="publicEventScores" class="small">점수를 불러오는 중입니다.</div></div>
+   <div class="tabs" id="gradeTabs"></div>
   <div class="tablewrap"><table><thead><tr><th>순위</th><th>반</th><th>총점</th><th>풋살</th><th>배드민턴</th><th>판뒤집기</th><th>줄다리기</th><th>3인4각</th><th>8자줄넘기</th><th>계주</th></tr></thead><tbody id="scoreBody"></tbody></table></div>
   <br><h3>배점 기준</h3><div class="tablewrap"><table><thead><tr><th>종목</th><th>1위</th><th>2위</th><th>3위</th><th>4위</th><th>5위</th><th>6위</th><th>7위</th></tr></thead><tbody id="pointsBody"></tbody></table></div>
 </section>
@@ -342,6 +343,7 @@ try {
     <span class="badge">1·2·3학년 토너먼트 연결형</span>
   </div>
   <p class="muted">1학년, 2학년, 3학년 순서로 대진표를 배치했습니다. 한글파일의 반 배치 기준 대진은 그대로 유지했습니다. 휴대폰에서는 좌우로 밀어서 확인하세요.</p>
+  <div class="card full" style="margin:12px 0"><h3>🔴 실시간 경기 결과</h3><div id="publicMatchResults" class="small">경기 결과를 불러오는 중입니다.</div></div>
   <div class="hwp-bracket-wrap"><article class="hwp-grade-card"><div class="hwp-grade-title">대 진 표(1학년)</div><div class="hwp-bracket-row"><svg viewBox="0 0 1000 390" role="img" aria-label="풋살 1학년 대진표"><rect x="0" y="0" width="1000" height="390" rx="16" fill="#fff" stroke="#eadde2"/><text x="26" y="34" font-size="20" font-weight="800" fill="#5d1830">풋살</text>
         <text x="140" y="148" text-anchor="middle" font-size="14" font-weight="800" fill="#5d1830">1경기</text>
         <rect x="60" y="160" width="160" height="76" rx="9" fill="#fffafb" stroke="#cfaeb9" stroke-width="1.5"/>
@@ -1013,7 +1015,24 @@ function timeMin(t){let[a,b]=t.split(':').map(Number);return a*60+b} function up
 function getScores(){let o=ls('sportsday_scores',{});[1,2,3].forEach(g=>{o[g]??={};for(let c=1;c<=gradeClasses[g];c++){o[g][c]??={};sports.forEach(s=>o[g][c][s]??=0)}});return o}
 function setGrade(g,el){currentGrade=g;document.querySelectorAll('#gradeTabs button').forEach(b=>b.classList.remove('active'));el.classList.add('active');renderScores()}
 function renderScores(){let o=getScores()[currentGrade];let rows=Object.entries(o).map(([c,v])=>({c,total:sports.reduce((a,s)=>a+(v[s]||0),0),v})).sort((a,b)=>b.total-a.total);scoreBody.innerHTML=rows.map((r,i)=>`<tr><td class="rank${i+1}">${i+1}</td><td><b>${r.c}반</b></td><td><b>${r.total}</b></td>${sports.map(s=>`<td>${r.v[s]||0}</td>`).join('')}</tr>`).join('');renderHomeRank()}
-function applyRankScore(){let g=+adminGrade.value,s=adminSport.value,ranks=adminRanks.value.split(',').map(x=>+x.trim()).filter(Boolean),o=getScores();Object.keys(o[g]).forEach(c=>o[g][c][s]=0);ranks.forEach((c,i)=>{if(o[g][c])o[g][c][s]=points[s][i]??0});save('sportsday_scores',o);currentGrade=g;renderScores();alert('반영했습니다.');}
+async function applyRankScore(){
+ let g=+adminGrade.value,s=adminSport.value,ranks=adminRanks.value.split(',').map(x=>+x.trim()).filter(Boolean),o=getScores();
+ Object.keys(o[g]).forEach(c=>o[g][c][s]=0);
+ ranks.forEach((c,i)=>{if(o[g][c])o[g][c][s]=points[s][i]??0});
+ save('sportsday_scores',o);currentGrade=g;renderScores();
+ const pw=window.__sportsdayAdminPassword||'';
+ if(!pw){alert('화면에는 반영했지만 서버 저장을 위해 오른쪽 아래 관리자 버튼으로 로그인한 뒤 다시 입력해 주세요.');return;}
+ try{
+   const classes=Object.keys(o[g]);
+   for(const c of classes){
+     const score=o[g][c][s]||0;
+     const r=await publicSbFetch('/rest/v1/rpc/admin_set_event_score',{method:'POST',body:JSON.stringify({p_password:pw,p_grade:g,p_sport:s,p_class_no:String(c),p_score:score})});
+     if(!r?.ok)throw new Error(r?.message||'서버 저장 실패');
+   }
+   if(window.refreshSportsdayPublicState)await window.refreshSportsdayPublicState();
+   alert('종목 순위와 점수가 실시간 사이트에 반영되었습니다.');
+ }catch(e){alert('서버 반영 실패: '+e.message);}
+}
 function resetScores(){if(confirm('전체 점수를 초기화할까요?')){localStorage.removeItem('sportsday_scores');renderScores()}}
 function setManualCurrent(){save('sportsday_current',currentManual.value.trim());updateCurrent()} function clearManualCurrent(){localStorage.removeItem('sportsday_current');currentManual.value='';updateCurrent()}
 function addNotice(){let t=noticeText.value.trim();if(!t)return;let a=ls('sportsday_notices',[]);a.unshift({t,at:new Date().toLocaleString('ko-KR')});save('sportsday_notices',a);noticeText.value='';renderNotices()}
@@ -1426,7 +1445,7 @@ init();
   const cfg=window.SPORTSDAY_SUPABASE||{};
   const SB_URL=(cfg.url||localStorage.getItem('sportsday_supabase_url')||'').replace(/\/$/,'');
   const SB_KEY=cfg.publishableKey||localStorage.getItem('sportsday_supabase_key')||'';
-  let adminPassword='';
+  let adminPassword=''; window.__sportsdayAdminPassword='';
 
   async function sbFetch(path,options={}){
     if(!SB_URL||!SB_KEY) throw new Error('Supabase 연결 정보가 없습니다.');
@@ -1457,7 +1476,7 @@ init();
       if(!configured){
         const r=await rpc('admin_bootstrap',{p_password:pw});
         if(!r?.ok){msg.textContent=r?.message||'최초 설정에 실패했습니다.';return;}
-        adminPassword=pw; showPanel(); return;
+        adminPassword=pw; window.__sportsdayAdminPassword=pw; showPanel(); return;
       }
       const ok=await rpc('admin_verify',{p_password:pw});
       if(ok){adminPassword=pw;showPanel();}
@@ -1787,6 +1806,35 @@ init();
       }</div>`).join('');
     }
   };
+
+  async function getPublicEventScores(){
+    if(!U||!K)return [];
+    const r=await fetch(U+'/rest/v1/rpc/get_public_event_scores',{
+      method:'POST',headers:{apikey:K,Authorization:'Bearer '+K,'Content-Type':'application/json'},body:'{}'
+    });
+    if(!r.ok)return [];
+    return await r.json();
+  }
+  async function getPublicMatchResults(){
+    if(!U||!K)return [];
+    const r=await fetch(U+'/rest/v1/rpc/get_public_match_results',{
+      method:'POST',headers:{apikey:K,Authorization:'Bearer '+K,'Content-Type':'application/json'},body:'{}'
+    });
+    if(!r.ok)return [];
+    return await r.json();
+  }
+  function renderPublicEventScores(rows){
+    const box=document.getElementById('publicEventScores'); if(!box)return;
+    if(!Array.isArray(rows)||!rows.length){box.textContent='종목별 점수 입력 전입니다.';return;}
+    const grouped={};
+    rows.forEach(x=>{const k=`${x.grade}학년 ${x.sport}`;(grouped[k]??=[]).push(x)});
+    box.innerHTML=Object.entries(grouped).map(([k,a])=>`<div style="padding:7px 0;border-bottom:1px solid #eee"><b>${k}</b> · ${a.sort((x,y)=>Number(y.score)-Number(x.score)).map(x=>`${x.class_no}반 ${x.score}점`).join(' / ')}</div>`).join('');
+  }
+  function renderPublicMatchResults(rows){
+    const box=document.getElementById('publicMatchResults'); if(!box)return;
+    if(!Array.isArray(rows)||!rows.length){box.textContent='경기 결과 입력 전입니다.';return;}
+    box.innerHTML=rows.map(x=>`<div style="padding:7px 0;border-bottom:1px solid #eee"><b>${x.grade}학년 ${x.sport} · ${x.round_name}</b> &nbsp; ${x.team_a} vs ${x.team_b} → <b>${x.winner} 승</b></div>`).join('');
+  }
   async function getEntranceRankings(){
     if(!U||!K)return null;
     const r=await fetch(U+'/rest/v1/rpc/get_entrance_vote_rankings',{
@@ -1816,13 +1864,15 @@ init();
   };
 
   async function refresh(){
-    const [s,voteRanks]=await Promise.all([getState(),getEntranceRankings()]);
+    const [s,voteRanks,eventScores,matchResults]=await Promise.all([getState(),getEntranceRankings(),getPublicEventScores(),getPublicMatchResults()]);
     if(s){
       window.SPORTSDAY_SHARED_STATE=s;
       window.renderSharedNotice(s.notice||'');
       window.renderSharedScores(s.scores||{});
     }
     if(voteRanks)window.renderEntranceRankings(voteRanks);
+    renderPublicEventScores(eventScores);
+    renderPublicMatchResults(matchResults);
   }
   window.refreshSportsdayPublicState=refresh;
   refresh();
