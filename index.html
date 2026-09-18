@@ -801,6 +801,120 @@ try {
     <div class="card full"><h3>☁️ 실시간 운영 연결</h3><p class="small">Supabase 프로젝트의 URL과 anon key를 입력하면 이 기기를 공용 데이터베이스에 연결할 수 있도록 준비했습니다. 교직원 투표는 서버에서 1회용 코드를 검증하도록 별도 SQL 파일을 함께 제공합니다.</p><div class="formrow"><div class="field"><label>Supabase Project URL</label><input id="supabaseUrl" placeholder="https://xxxx.supabase.co"></div><div class="field"><label>Supabase anon key</label><input id="supabaseKey" type="password" placeholder="anon public key"></div></div><div class="actions"><button class="btn primary" onclick="saveCloudConfig()">연결 정보 저장</button><button class="btn" onclick="testCloudConfig()">연결 확인</button><button class="btn" onclick="clearCloudConfig()">연결 해제</button></div><div id="cloudStatus" class="result">현재 로컬 모드입니다. Supabase 연결 전에도 모든 기능을 시험할 수 있습니다.</div></div><div class="card full"><h3>💾 데이터</h3><div class="actions"><button class="btn" onclick="exportData()">JSON 내보내기</button><button class="btn danger" onclick="clearAll()">이 기기 데이터 전체 삭제</button></div><p class="small">실제 여러 기기 동시 운영은 Supabase 설정 후 사용하세요. 연결 전에는 브라우저별 로컬 데이터가 사용됩니다.</p></div>
   </div>
 </section>
+
+<style>
+#eventOpsAdmin{margin-top:18px}
+.ops-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.ops-tab{border:1px solid #ddd;background:#fff;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer}
+.ops-tab.active{background:#7b1e2b;color:#fff;border-color:#7b1e2b}
+.ops-pane{display:none}
+.ops-pane.active{display:block}
+.ops-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.ops-grid label{font-size:12px;font-weight:800}
+.ops-grid select,.ops-grid input{width:100%;padding:9px;border:1px solid #ddd;border-radius:8px;background:#fff}
+.ops-btn{margin-top:10px;border:0;border-radius:9px;padding:10px 14px;background:#7b1e2b;color:white;font-weight:900;cursor:pointer}
+.ops-list{margin-top:12px;font-size:13px}
+.ops-row{padding:8px 0;border-bottom:1px solid #eee}
+</style>
+<section id="eventOpsAdmin" class="card" style="display:none">
+  <h3>🏟️ 경기 운영 관리</h3>
+  <div class="muted">관리자 전용 · 경기결과와 종목별 점수를 현장에서 바로 입력합니다.</div>
+  <div class="ops-tabs">
+    <button class="ops-tab active" onclick="opsTab('match',this)">경기결과·대진표 관리</button>
+    <button class="ops-tab" onclick="opsTab('score',this)">종목별 점수 관리</button>
+  </div>
+  <div id="ops-match" class="ops-pane active">
+    <div class="ops-grid">
+      <label>학년<select id="mrGrade"><option>1</option><option>2</option><option>3</option></select></label>
+      <label>종목<select id="mrSport"><option>풋살</option><option>배드민턴</option><option>판뒤집기</option><option>줄다리기</option></select></label>
+      <label>경기<input id="mrRound" placeholder="예선1 / 본선1 / 결승"></label>
+      <label>A팀<input id="mrA" placeholder="예: 3반"></label>
+      <label>B팀<input id="mrB" placeholder="예: 5반"></label>
+      <label>승리팀<input id="mrWinner" placeholder="예: 5반"></label>
+    </div>
+    <button class="ops-btn" onclick="saveMatchResult()">경기 결과 저장</button>
+    <button class="ops-btn" style="background:#555" onclick="loadMatchResults()">저장 결과 새로고침</button>
+    <div id="matchResultList" class="ops-list"></div>
+  </div>
+  <div id="ops-score" class="ops-pane">
+    <div class="ops-grid">
+      <label>학년<select id="esGrade"><option>1</option><option>2</option><option>3</option></select></label>
+      <label>종목<select id="esSport"><option>풋살</option><option>배드민턴</option><option>판뒤집기</option><option>줄다리기</option><option>3인4각</option><option>8자줄넘기</option><option>계주</option></select></label>
+      <label>반<input id="esClass" placeholder="예: 4"></label>
+      <label>점수<input id="esScore" type="number" min="0" placeholder="예: 100"></label>
+    </div>
+    <button class="ops-btn" onclick="saveEventScore()">종목 점수 저장</button>
+    <button class="ops-btn" style="background:#555" onclick="loadEventScores()">저장 점수 새로고침</button>
+    <div id="eventScoreList" class="ops-list"></div>
+  </div>
+</section>
+<script>
+function opsTab(which,btn){
+ document.querySelectorAll('.ops-tab').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.ops-pane').forEach(x=>x.classList.remove('active'));
+ btn.classList.add('active'); document.getElementById('ops-'+which).classList.add('active');
+}
+function opsAdminPassword(){
+ return document.getElementById('adminPw')?.value || document.getElementById('adminPassword')?.value || window.__adminPassword || '';
+}
+async function opsRpc(fn,args){
+ const {data,error}=await sb.rpc(fn,args);
+ if(error) throw error; return data;
+}
+async function saveMatchResult(){
+ try{
+  const r=await opsRpc('admin_set_match_result',{
+   p_password:opsAdminPassword(),p_grade:+mrGrade.value,p_sport:mrSport.value,
+   p_round_name:mrRound.value,p_team_a:mrA.value,p_team_b:mrB.value,p_winner:mrWinner.value
+  });
+  alert(r?.message||'저장했습니다.'); if(r?.ok) loadMatchResults();
+ }catch(e){alert('저장 오류: '+e.message)}
+}
+async function loadMatchResults(){
+ try{
+  const r=await opsRpc('admin_get_match_results',{p_password:opsAdminPassword()});
+  if(!r?.ok){alert(r?.message||'조회 실패');return}
+  matchResultList.innerHTML=(r.matches||[]).map(x=>`<div class="ops-row"><b>${x.grade}학년 ${x.sport}</b> · ${x.round_name} · ${x.team_a} vs ${x.team_b} → <b>${x.winner} 승</b></div>`).join('')||'<div class="muted">저장된 경기 결과가 없습니다.</div>';
+ }catch(e){alert('조회 오류: '+e.message)}
+}
+async function saveEventScore(){
+ try{
+  const r=await opsRpc('admin_set_event_score',{
+   p_password:opsAdminPassword(),p_grade:+esGrade.value,p_sport:esSport.value,
+   p_class_no:esClass.value,p_score:+esScore.value
+  });
+  alert(r?.message||'저장했습니다.'); if(r?.ok) loadEventScores();
+ }catch(e){alert('저장 오류: '+e.message)}
+}
+async function loadEventScores(){
+ try{
+  const r=await opsRpc('admin_get_event_scores',{p_password:opsAdminPassword()});
+  if(!r?.ok){alert(r?.message||'조회 실패');return}
+  eventScoreList.innerHTML=(r.scores||[]).map(x=>`<div class="ops-row"><b>${x.grade}학년 ${x.class_no}반</b> · ${x.sport}: <b>${x.score}점</b></div>`).join('')||'<div class="muted">저장된 종목별 점수가 없습니다.</div>';
+ }catch(e){alert('조회 오류: '+e.message)}
+}
+// 관리자 화면이 열리면 운영관리 영역도 함께 표시
+const _opsObserver=new MutationObserver(()=>{
+ const admin=document.getElementById('adminPanel')||document.getElementById('admin');
+ const ops=document.getElementById('eventOpsAdmin');
+ if(!ops)return;
+ if(admin){
+   const visible=getComputedStyle(admin).display!=='none' && !admin.classList.contains('hidden');
+   ops.style.display=visible?'block':'none';
+ }
+});
+window.addEventListener('load',()=>{
+ const admin=document.getElementById('adminPanel')||document.getElementById('admin');
+ if(admin)_opsObserver.observe(admin,{attributes:true,attributeFilter:['style','class']});
+ // fallback: clicking any admin-labelled button reveals the section
+ document.querySelectorAll('button,a').forEach(el=>{
+  if((el.textContent||'').includes('관리자')) el.addEventListener('click',()=>setTimeout(()=>{
+    const ops=document.getElementById('eventOpsAdmin'); if(ops) ops.style.display='block';
+  },250));
+ });
+});
+</script>
+
 </main>
 <footer class="footer"><div class="footer-inner"><img src="school-logo.png" alt="학교 로고"><div><b>충북대학교사범대학부설중학교</b><br>2026 교내 체육 한마당 추진위원회 · 『같이 뛰어, 가치 UP!』</div></div></footer>
 <script>
