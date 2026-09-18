@@ -324,7 +324,7 @@ try {
 </section>
 
 <section id="scores" class="section">
-  <div class="sectionhead"><div><h2>🏆 실시간 점수</h2><p>관리자 입력값을 기준으로 학년별 종합점수를 자동 계산</p></div><span class="badge">LOCAL DEMO</span></div>
+  <div class="sectionhead"><div><h2>🏆 실시간 점수</h2><p>관리자 입력값을 기준으로 학년별 종합점수를 자동 계산</p></div><span class="badge">LIVE</span></div>
   <div class="card full" style="margin:0 0 12px"><h3>🔴 서버 실시간 종목별 점수</h3><div id="publicEventScores" class="small">점수를 불러오는 중입니다.</div></div>
    <div class="tabs" id="gradeTabs"></div>
   <div class="tablewrap"><table><thead><tr><th>순위</th><th>반</th><th>총점</th><th>풋살</th><th>배드민턴</th><th>판뒤집기</th><th>줄다리기</th><th>3인4각</th><th>8자줄넘기</th><th>계주</th></tr></thead><tbody id="scoreBody"></tbody></table></div>
@@ -1866,11 +1866,31 @@ init();
     return await r.json();
   }
   function renderPublicEventScores(rows){
-    const box=document.getElementById('publicEventScores'); if(!box)return;
-    if(!Array.isArray(rows)||!rows.length){box.textContent='종목별 점수 입력 전입니다.';return;}
-    const grouped={};
-    rows.forEach(x=>{const k=`${x.grade}학년 ${x.sport}`;(grouped[k]??=[]).push(x)});
-    box.innerHTML=Object.entries(grouped).map(([k,a])=>`<div style="padding:7px 0;border-bottom:1px solid #eee"><b>${k}</b> · ${a.sort((x,y)=>Number(y.score)-Number(x.score)).map(x=>`${x.class_no}반 ${x.score}점`).join(' / ')}</div>`).join('');
+    const box=document.getElementById('publicEventScores');
+    if(!Array.isArray(rows)||!rows.length){
+      if(box)box.textContent='종목별 점수 입력 전입니다.';
+      return;
+    }
+
+    // 서버의 종목별 점수를 기존 실시간 점수 표(scoreBody)의 데이터에도 동기화
+    // 즉, 관리자 입력 → Supabase → 학생/교사용 종목별 열 + 총점까지 동일하게 표시
+    try{
+      const o=getScores();
+      rows.forEach(x=>{
+        const g=Number(x.grade), c=String(x.class_no).trim(), sport=String(x.sport).trim();
+        if(!o[g])o[g]={};
+        if(!o[g][c])o[g][c]={};
+        o[g][c][sport]=Number(x.score)||0;
+      });
+      save('sportsday_scores',o);
+      renderScores();
+    }catch(e){console.warn('실시간 종목별 점수 표 동기화 실패',e);}
+
+    if(box){
+      const grouped={};
+      rows.forEach(x=>{const k=`${x.grade}학년 ${x.sport}`;(grouped[k]??=[]).push(x)});
+      box.innerHTML=Object.entries(grouped).map(([k,a])=>`<div style="padding:7px 0;border-bottom:1px solid #eee"><b>${k}</b> · ${a.sort((x,y)=>Number(y.score)-Number(x.score)).map(x=>`${x.class_no}반 ${x.score}점`).join(' / ')}</div>`).join('');
+    }
   }
   function renderPublicMatchResults(rows){
     const box=document.getElementById('publicMatchResults'); if(!box)return;
